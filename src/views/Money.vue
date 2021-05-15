@@ -1,5 +1,5 @@
 <template>
-  <div class="money">
+  <Layout>
     <div class="tag">
       <ul>
         <li>
@@ -49,12 +49,12 @@
         <button>/</button>
       </div>
     </div>
-    <Nav />
-  </div>
+  </Layout>
 </template>
 
 <script>
 export default {
+  components: {},
   data() {
     return {
       output: "200",
@@ -127,8 +127,16 @@ li {
   background: cadetblue;
 }
 
-.money {
+.content {
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
+  overflow: auto;
+}
+
+.nav-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 </style>

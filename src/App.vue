@@ -37,15 +37,6 @@ a:active {
   background: none;
 }
 
-.navbar {
-  display: flex;
-  justify-content: space-evenly;
-}
-
-.navbar a {
-  padding: 1em 0;
-}
-
 ul,
 ol {
   list-style: none;

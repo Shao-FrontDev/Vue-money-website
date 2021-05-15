@@ -1,10 +1,9 @@
 <template>
-  <div>
+  <Layout>
     <div>
       Statistics
     </div>
-    <Nav />
-  </div>
+  </Layout>
 </template>
 
 <script>

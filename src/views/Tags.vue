@@ -1,10 +1,9 @@
 <template>
-  <div>
+  <Layout>
     <div>
       Tags
     </div>
-    <Nav />
-  </div>
+  </Layout>
 </template>
 
 <script>
