@@ -11,14 +11,12 @@ export default {
 </script>
 
 <style lang="scss">
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
+@import "~@/assets/styles/normalize.scss";
+@import "~@/assets/styles/reset.scss";
+@import "~@/assets/styles/helper.scss";
 body {
   background: white;
+  font-family: $font-hei;
 }
 
 .home {
@@ -26,19 +24,5 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-}
-
-a {
-  color: black;
-  text-decoration: none;
-}
-
-a:active {
-  background: none;
-}
-
-ul,
-ol {
-  list-style: none;
 }
 </style>
