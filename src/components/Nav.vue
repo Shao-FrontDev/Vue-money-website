@@ -12,11 +12,24 @@
 </template>
 
 <script lang="ts">
-import x from "@/assets/icons/label.svg";
-console.log(x);
+/* eslint-disable */
+let importAll = (
+  requireContext: __WebpackModuleApi.RequireContext
+) => requireContext.keys().forEach(requireContext);
+
+try {
+  importAll(
+    require.context("../assets/icons", true, /\.svg$/)
+  );
+} catch (error) {
+  console.log(error);
+}
+
+// import x from "@/assets/icons/label.svg";
+// console.log(x);
 
 export default {
-  name: "Nav"
+  name: "Nav",
 };
 </script>
 
