@@ -30,8 +30,8 @@ export default {
 
 <style lang="scss">
 .icon {
-  height: 1.8em;
-  width: 1.8em;
+  height: 1em;
+  width: 1em;
   vertical-align: -0.15em;
   fill: currentColor;
   overflow: hidden;

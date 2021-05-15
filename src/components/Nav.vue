@@ -1,28 +1,22 @@
 <template>
   <div class="nav">
-    <router-link to="tags" active-class="selected">
-      <div class="nav-item">
-        <Icon name="label" />
-        <span>
-          标签
-        </span>
-      </div>
+    <router-link to="tags" active-class="selected" class="item">
+      <Icon class="icon" name="label" />
+      <span>
+        标签
+      </span>
     </router-link>
-    <router-link to="money" active-class="selected">
-      <div class="nav-item">
-        <Icon name="money" />
-        <span>
-          记一笔
-        </span>
-      </div>
+    <router-link to="money" active-class="selected" class="item">
+      <Icon class="icon" name="money" />
+      <span>
+        记一笔
+      </span>
     </router-link>
-    <router-link to="statistics" active-class="selected">
-      <div class="nav-item">
-        <Icon name="statistics" />
-        <span>
-          统计
-        </span>
-      </div>
+    <router-link to="statistics" active-class="selected" class="item">
+      <Icon class="icon" name="statistics" />
+      <span>
+        统计
+      </span>
     </router-link>
   </div>
 </template>
@@ -50,24 +44,26 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.selected {
-  color: rgb(4, 110, 110);
-}
-
+@import "~@/assets/styles/helper.scss";
 .nav {
-  box-shadow: 0 -1px 5px 1px rgba(0, 0, 0, 0.1);
   display: flex;
-}
-.nav a {
-  flex-grow: 1;
-  padding: 0.5em 0;
-}
-.nav-item {
-  display: flex;
-  flex-grow: 1;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  outline: none;
+  flex-direction: row;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.25);
+  font-size: 12px;
+  > .item {
+    padding: 2px 0;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    .icon {
+      width: 32px;
+      height: 32px;
+    }
+  }
+  > .item.selected {
+    color: $color-hightlight;
+  }
 }
 </style>
