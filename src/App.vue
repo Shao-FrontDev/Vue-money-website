@@ -1,16 +1,16 @@
 <template>
   <div class="home">
     <router-view></router-view>
-    <div class="navbar">
-      <router-link to="tags">标签</router-link>
-      <router-link to="money">记一笔</router-link>
-      <router-link to="statistics">统计</router-link>
-    </div>
   </div>
 </template>
 
+<script>
+export default {
+  components: {}
+};
+</script>
+
 <style lang="scss">
-@import "~@/assets/styles/test.scss";
 * {
   padding: 0;
   margin: 0;
@@ -18,7 +18,7 @@
 }
 
 body {
-  background: $red;
+  background: white;
 }
 
 .home {

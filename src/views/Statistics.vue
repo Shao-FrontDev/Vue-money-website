@@ -1,11 +1,16 @@
 <template>
   <div>
-    Statistics
+    <div>
+      Statistics
+    </div>
+    <Nav />
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  components: {}
+};
 </script>
 
 <style></style>

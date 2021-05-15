@@ -49,6 +49,7 @@
         <button>/</button>
       </div>
     </div>
+    <Nav />
   </div>
 </template>
 
@@ -56,12 +57,16 @@
 export default {
   data() {
     return {
-      output: "200"
+      output: "200",
+      active: false
     };
   },
   methods: {
     clear() {
-      this.output = ` `;
+      this.output = ``;
+    },
+    changeState() {
+      this.active = !this.active;
     }
   }
 };
