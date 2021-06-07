@@ -1,6 +1,6 @@
 <template>
   <Layout>
-    <Options />
+    <Types />
     <Tags />
     <Notes />
     <Output />
@@ -11,14 +11,14 @@
 <script>
 import NumberPad from "@/components/Money/NumberPad.vue";
 import Tags from "@/components/Money/Tags.vue";
-import Options from "@/components/Money/Options.vue";
+import Types from "@/components/Money/Types.vue";
 import Output from "@/components/Money/Output.vue";
 import Notes from "@/components/Money/Notes.vue";
 export default {
   components: {
     NumberPad,
     Tags,
-    Options,
+    Types,
     Output,
     Notes
   },
@@ -41,20 +41,4 @@ export default {
 
 <style lang="scss" scoped>
 @import "~@/assets/styles/helper.scss";
-
-.notes {
-  height: 64px;
-  line-height: 64px;
-  font-size: 16px;
-  padding: 16px;
-  span {
-    margin-right: 12px;
-  }
-
-  input {
-    border: none;
-    outline: none;
-    padding-left: 18px;
-  }
-}
 </style>
