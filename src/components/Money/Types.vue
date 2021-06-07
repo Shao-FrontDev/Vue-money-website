@@ -8,9 +8,7 @@
 </template>
 
 <script>
-export default {
-  name: "Options"
-};
+export default {};
 </script>
 
 <style lang="scss" scoped>
