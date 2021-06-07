@@ -11,15 +11,18 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from "vue";
+
+export default defineComponent({
   data() {
     return {
       type: "+" // '-' 表示支出 '+' 表示收入
     };
   },
+
   methods: {
-    selectType(type) {
+    selectType(type: string) {
       console.log("click");
       if (type !== "-" && type !== "+") {
         throw new Error("type is unknown");
@@ -27,7 +30,24 @@ export default {
       this.type = type;
     }
   }
-};
+});
+
+// export default {
+//   data() {
+//     return {
+//       type: "+" // '-' 表示支出 '+' 表示收入
+//     };
+//   },
+//   methods: {
+//     selectType(type) {
+//       console.log("click");
+//       if (type !== "-" && type !== "+") {
+//         throw new Error("type is unknown");
+//       }
+//       this.type = type;
+//     }
+//   }
+// };
 </script>
 
 <style lang="scss" scoped>
