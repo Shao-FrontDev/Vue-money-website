@@ -24,7 +24,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 export default {
   name: "NumberPad",
   data() {
@@ -33,9 +33,9 @@ export default {
     };
   },
   methods: {
-    inputContent(event: MouseEvent) {
-      const button = event?.target as HTMLButtonElement;
-      const input = button.textContent!;
+    inputContent() {
+      const button = event?.target;
+      const input = button.textContent;
 
       //限制计算器输出的长度
       if (this.output.length === 16) return;
@@ -53,7 +53,6 @@ export default {
 
       this.output += input;
     },
-
     deleteNumber() {
       this.output = this.output.substr(0, this.output.length - 1);
     },
@@ -75,6 +74,7 @@ export default {
       border: none;
       height: 64px;
       background-color: cornflowerblue;
+      cursor: pointer;
     }
     .ok {
       grid-column: 4 / 5;
