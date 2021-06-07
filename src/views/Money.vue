@@ -1,7 +1,7 @@
 <template>
   <Layout>
     <Types />
-    <Tags />
+    <Tags @update:dataSource="updateData" :dataSource="tags" />
     <Notes />
     <NumberPad />
   </Layout>
@@ -22,7 +22,8 @@ export default {
   data() {
     return {
       output: "200",
-      active: false
+      active: false,
+      tags: ["衣", "食", "住", "行", "其他"]
     };
   },
   methods: {
@@ -31,6 +32,9 @@ export default {
     },
     changeState() {
       this.active = !this.active;
+    },
+    updateData(tags) {
+      this.tags = tags;
     }
   }
 };
