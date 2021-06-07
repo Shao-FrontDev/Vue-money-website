@@ -3,7 +3,6 @@
     <Types />
     <Tags />
     <Notes />
-    <Output />
     <NumberPad />
   </Layout>
 </template>
@@ -12,14 +11,12 @@
 import NumberPad from "@/components/Money/NumberPad.vue";
 import Tags from "@/components/Money/Tags.vue";
 import Types from "@/components/Money/Types.vue";
-import Output from "@/components/Money/Output.vue";
 import Notes from "@/components/Money/Notes.vue";
 export default {
   components: {
     NumberPad,
     Tags,
     Types,
-    Output,
     Notes
   },
   data() {
