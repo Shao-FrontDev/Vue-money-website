@@ -1,5 +1,11 @@
 <template>
   <Layout>
+    <div>
+      <ul class="types">
+        <li class="selected">支出</li>
+        <li>收入</li>
+      </ul>
+    </div>
     <div class="tags">
       <ul class="current">
         <li>衣服</li>
@@ -7,7 +13,7 @@
         <li>衣服</li>
         <li>衣服</li>
       </ul>
-      <div class="">
+      <div class="new">
         <button>
           新增标签
         </button>
@@ -16,14 +22,8 @@
     <div>
       <label class="notes">
         <span class="name">备注</span>
-        <input type="text" />
+        <input type="text" placeholder="在这里添加备注" />
       </label>
-    </div>
-    <div>
-      <ul class="types">
-        <li class="selected">支出</li>
-        <li>收入</li>
-      </ul>
     </div>
     <div class="output">
       <span>{{ output }}</span>
@@ -42,7 +42,7 @@
         <button>8</button>
         <button>9</button>
         <button class="ok">OK</button>
-        <button>0</button>
+        <button class="zero">0</button>
         <button>.</button>
       </div>
     </div>
@@ -69,61 +69,98 @@ export default {
 };
 </script>
 
-<style lang="scss" scope>
-.options {
-  /* background: olive; */
-  display: flex;
-  padding: 1em 0;
-  justify-content: space-between;
-  text-align: center;
-}
-.options span {
-  display: block;
+<style lang="scss" scoped>
+@import "~@/assets/styles/helper.scss";
+
+.tags {
+  font-size: 14px;
+  padding: 16px;
   flex: 1;
+  > .current {
+    display: flex;
+    > li {
+      background: #d9d9d9;
+      $h: 24px;
+      height: $h;
+      line-height: $h;
+      border-radius: ($h/2);
+      padding: 0 8px;
+      margin-right: 12px;
+    }
+  }
+  > .new {
+    padding-top: 16px;
+    button {
+      background: transparent;
+      border: none;
+      color: #999;
+      border-bottom: 1px solid;
+      padding: 0 4px;
+    }
+  }
 }
 
-.active {
-  padding-bottom: 0.5em;
-  border-bottom: 2px solid black;
+.numberPad {
+  min-height: 256px;
+  .buttons {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    button {
+      border: none;
+      height: 64px;
+      background-color: cornflowerblue;
+    }
+    .ok {
+      grid-column: 4 / 5;
+      grid-row-start: 3;
+      grid-row-end: 5;
+      height: auto;
+    }
+    .zero {
+      grid-column-start: 1;
+      grid-column-end: 3;
+    }
+  }
 }
 
-.tag {
-  flex: 1;
-}
-
-.buttons {
+.types {
   display: flex;
-  flex-wrap: wrap;
+  height: 64px;
+  line-height: 64px;
+  .selected {
+    color: cornflowerblue;
+  }
+  > * {
+    text-align: center;
+    width: 50%;
+  }
 }
 
 .output {
-  padding: 1em;
-  display: flex;
-  flex-direction: row-reverse;
+  position: relative;
+  height: 72px;
+  font-size: 36px;
+  line-height: 72px;
+
+  span {
+    position: absolute;
+    right: 18px;
+  }
 }
 
-.buttons > button {
-  width: 20%;
-  border: none;
-  padding: 0.75em;
-  transition: all 0.5s ease-in;
-}
+.notes {
+  height: 64px;
+  line-height: 64px;
+  font-size: 16px;
+  padding: 16px;
+  span {
+    margin-right: 12px;
+  }
 
-.buttons > button:focus {
-  outline: none;
-  background: cadetblue;
-}
-
-.content {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  overflow: auto;
-}
-
-.nav-wrapper {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
+  input {
+    border: none;
+    outline: none;
+    padding-left: 18px;
+  }
 }
 </style>

@@ -14,7 +14,8 @@ module.exports = {
       .use("svg-sprite-loader")
       .loader("svg-sprite-loader")
       .options({ extract: false })
-      .end();
+      .end()
+     
 
     config
       .plugin("svg-sprite")
