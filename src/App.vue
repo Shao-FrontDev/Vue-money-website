@@ -24,5 +24,6 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  background: #e5e5e5;
 }
 </style>
