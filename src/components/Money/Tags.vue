@@ -23,7 +23,10 @@ export default {
   name: "Tags",
   props: {
     dataSource: {
-      type: Array
+      type: Array,
+      default: () => {
+        return [];
+      }
     }
   },
   data() {
@@ -39,6 +42,7 @@ export default {
       } else {
         this.selectedTags.push(tag);
       }
+      this.$emit("update:selectedTags", this.selectedTags);
     },
     create() {
       const name = window.prompt("请输入标签名");

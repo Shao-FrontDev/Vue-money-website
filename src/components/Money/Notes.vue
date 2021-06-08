@@ -2,18 +2,26 @@
   <div>
     <label class="notes">
       <span class="name">备注</span>
-      <input type="text" placeholder="在这里添加备注" v-model="value" />
+      <input
+        type="text"
+        placeholder="在这里添加备注"
+        :value="value"
+        @input="$emit('update:value', $event.target.value)"
+      />
     </label>
   </div>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      value: ""
-    };
-  }
+  model: {
+    prop: "value",
+    event: "update:value"
+  },
+  props: {
+    value: String
+  },
+  emits: ["update:value"]
 };
 </script>
 

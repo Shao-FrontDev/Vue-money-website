@@ -1,9 +1,13 @@
 <template>
   <Layout>
-    <Types />
-    <Tags @update:dataSource="updateData" :dataSource="tags" />
-    <Notes />
-    <NumberPad />
+    <Types @update:selectedType="onUpdateType" />
+    <Tags
+      @update:dataSource="updateData"
+      :dataSource="tags"
+      @update:selectedTags="onUpdateTags"
+    />
+    <Notes v-model:value="selectedNotes" />
+    <NumberPad @update:selectedAmount="onUpdateAmount" />
   </Layout>
 </template>
 
@@ -23,7 +27,11 @@ export default {
     return {
       output: "200",
       active: false,
-      tags: ["衣", "食", "住", "行", "其他"]
+      tags: ["衣", "食", "住", "行", "其他"],
+      selectedTags: [],
+      selectedNotes: "",
+      selectedType: "",
+      selectedAmount: ""
     };
   },
   methods: {
@@ -35,6 +43,18 @@ export default {
     },
     updateData(tags) {
       this.tags = tags;
+    },
+    onUpdateTags(tags) {
+      this.selectedTags = tags;
+    },
+
+    onUpdateType(type) {
+      console.log("selectedType", this.selectedNotes);
+      this.selectedType = type;
+    },
+    onUpdateAmount(amount) {
+      this.selectedAmount = amount;
+      console.log("selectedAmount", amount);
     }
   }
 };

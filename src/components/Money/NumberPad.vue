@@ -52,6 +52,7 @@ export default {
       }
 
       this.output += input;
+      this.$emit("update:selectedAmount", this.output);
     },
     deleteNumber() {
       this.output = this.output.substr(0, this.output.length - 1);

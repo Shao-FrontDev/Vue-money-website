@@ -28,6 +28,7 @@ export default defineComponent({
         throw new Error("type is unknown");
       }
       this.type = type;
+      this.$emit("update:selectedType", type);
     }
   }
 });
