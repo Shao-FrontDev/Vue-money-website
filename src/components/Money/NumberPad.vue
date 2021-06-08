@@ -37,7 +37,6 @@ export default {
       const button = event?.target;
       const input = button.textContent;
 
-      console.log("update");
       //限制计算器输出的长度
       if (this.output.length === 16) return;
       //限制计算器的点个数,如果已经有一个点再输入点就不行了
@@ -73,6 +72,7 @@ export default {
       this.$emit("update:selectedAmount", this.output);
     },
     updateData() {
+      this.output = "0";
       this.$emit("updateData");
     }
   }

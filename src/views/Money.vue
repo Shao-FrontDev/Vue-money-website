@@ -1,6 +1,5 @@
 <template>
   <Layout>
-    {{ record }}
     <Types @update:selectedType="onUpdateType" :type="record.selectedType" />
     <Tags
       @update:dataSource="updateData"
@@ -10,7 +9,7 @@
     <Notes v-model:value="record.selectedNotes" />
     <NumberPad
       @update:selectedAmount="onUpdateAmount"
-      @updateData="selectedData"
+      @updateData="saveRecord"
     />
   </Layout>
 </template>
@@ -37,7 +36,8 @@ export default {
         selectedNotes: "",
         selectedType: "-",
         selectedAmount: 0
-      }
+      },
+      recordList: JSON.parse(localStorage.getItem("recordList")) || []
     };
   },
   methods: {
@@ -60,10 +60,20 @@ export default {
     },
     onUpdateAmount(amount) {
       this.record.selectedAmount = parseFloat(amount);
-      console.log("selectedAmount", amount);
+      "selectedAmount", amount;
     },
-    selectedData() {
-      console.log("record", this.record);
+    saveRecord() {
+      this.record.selectedNotes = "";
+      const recordCopy = JSON.parse(JSON.stringify(this.record));
+      this.recordList.push(recordCopy);
+      console.log(this.recordList);
+    }
+  },
+  watch: {
+    "recordList.length": {
+      handler() {
+        localStorage.setItem("recordList", JSON.stringify(this.recordList));
+      }
     }
   }
 };

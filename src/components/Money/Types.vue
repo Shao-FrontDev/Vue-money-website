@@ -23,7 +23,6 @@ export default defineComponent({
 
   methods: {
     selectType(type: string) {
-      console.log("click");
       if (type !== "-" && type !== "+") {
         throw new Error("type is unknown");
       }
@@ -32,23 +31,6 @@ export default defineComponent({
     }
   }
 });
-
-// export default {
-//   data() {
-//     return {
-//       type: "+" // '-' 表示支出 '+' 表示收入
-//     };
-//   },
-//   methods: {
-//     selectType(type) {
-//       console.log("click");
-//       if (type !== "-" && type !== "+") {
-//         throw new Error("type is unknown");
-//       }
-//       this.type = type;
-//     }
-//   }
-// };
 </script>
 
 <style lang="scss" scoped>
