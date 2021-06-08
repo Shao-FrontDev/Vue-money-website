@@ -33,10 +33,11 @@ export default {
     };
   },
   methods: {
-    inputContent() {
+    inputContent(event) {
       const button = event?.target;
       const input = button.textContent;
 
+      console.log("update");
       //限制计算器输出的长度
       if (this.output.length === 16) return;
       //限制计算器的点个数,如果已经有一个点再输入点就不行了
@@ -45,8 +46,10 @@ export default {
       if (this.output === "0") {
         if ("0123456789".indexOf(input) >= 0) {
           this.output = input;
+          this.$emit("update:selectedAmount", this.output);
         } else {
           this.output += input;
+          this.$emit("update:selectedAmount", this.output);
         }
         return;
       }
@@ -55,11 +58,19 @@ export default {
       this.$emit("update:selectedAmount", this.output);
     },
     deleteNumber() {
-      this.output = this.output.substr(0, this.output.length - 1);
+      const result = this.output.substr(0, this.output.length - 1);
+      this.output = result;
+      if (result) {
+        this.$emit("update:selectedAmount", this.output);
+      } else {
+        this.output = "0";
+        this.$emit("update:selectedAmount", this.output);
+      }
     },
 
     clear() {
       this.output = "0";
+      this.$emit("update:selectedAmount", this.output);
     },
     updateData() {
       this.$emit("updateData");

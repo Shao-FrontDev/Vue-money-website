@@ -1,7 +1,7 @@
 <template>
   <Layout>
     {{ record }}
-    <Types @update:selectedType="onUpdateType" :type="record.type" />
+    <Types @update:selectedType="onUpdateType" :type="record.selectedType" />
     <Tags
       @update:dataSource="updateData"
       :dataSource="tags"
@@ -36,7 +36,7 @@ export default {
         selectedTags: [],
         selectedNotes: "",
         selectedType: "-",
-        selectedAmount: ""
+        selectedAmount: 0
       }
     };
   },
@@ -50,6 +50,7 @@ export default {
     updateData(tags) {
       this.record.tags = tags;
     },
+
     onUpdateTags(tags) {
       this.record.selectedTags = tags;
     },
@@ -58,7 +59,7 @@ export default {
       this.record.selectedType = type;
     },
     onUpdateAmount(amount) {
-      this.record.selectedAmount = amount;
+      this.record.selectedAmount = parseFloat(amount);
       console.log("selectedAmount", amount);
     },
     selectedData() {
