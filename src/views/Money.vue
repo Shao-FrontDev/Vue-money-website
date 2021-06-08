@@ -15,7 +15,8 @@
 </template>
 
 <script>
-import model from "./model";
+import recordListModel from "@/models/recordList";
+import tagListModel from "@/models/tagListModel";
 import NumberPad from "@/components/Money/NumberPad.vue";
 import Tags from "@/components/Money/Tags.vue";
 import Types from "@/components/Money/Types.vue";
@@ -32,14 +33,14 @@ export default {
     return {
       output: "200",
       active: false,
-      tags: ["衣", "食", "住", "行", "其他"],
+      tags: null,
       record: {
         selectedTags: [],
         selectedNotes: "",
         selectedType: "-",
         selectedAmount: 0
       },
-      recordList: model.fetch()
+      recordList: null
     };
   },
   methods: {
@@ -50,7 +51,7 @@ export default {
       this.active = !this.active;
     },
     updateData(tags) {
-      this.record.tags = tags;
+      this.tags = tags;
     },
 
     onUpdateTags(tags) {
@@ -65,7 +66,7 @@ export default {
       "selectedAmount", amount;
     },
     saveRecord() {
-      const recordCopy = model.clone(this.record);
+      const recordCopy = recordListModel.clone(this.record);
       this.recordList.push(recordCopy);
       this.record.selectedNotes = "";
     }
@@ -73,9 +74,21 @@ export default {
   watch: {
     "recordList.length": {
       handler() {
-        model.save(this.recordList);
+        recordListModel.save(this.recordList);
+      }
+    },
+    "tags.length": {
+      handler() {
+        console.log("tags");
+        tagListModel.save(this.tags);
       }
     }
+  },
+  created() {
+    const tagList = tagListModel.fetch();
+    const recordList = recordListModel.fetch();
+    this.tags = tagList;
+    this.recordList = recordList;
   }
 };
 </script>

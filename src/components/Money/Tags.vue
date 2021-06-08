@@ -64,6 +64,7 @@ export default {
   background: #fff;
   > .current {
     display: flex;
+    flex-wrap: wrap;
     > li {
       background: #d9d9d9;
       $h: 24px;
@@ -72,6 +73,7 @@ export default {
       border-radius: ($h/2);
       padding: 0 8px;
       margin-right: 12px;
+      margin-bottom: 12px;
       &.selected {
         background: #a5a5a5;
       }

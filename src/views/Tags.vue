@@ -1,29 +1,43 @@
 <template>
   <Layout>
     <ol class="tags">
-      <li>
-        <span>衣</span>
-        <Icon class="icon" name="right" />
-      </li>
-      <li>
-        <span>衣</span>
-        <Icon class="icon" name="right" />
-      </li>
-      <li>
-        <span>衣</span>
+      <li v-for="(tag, index) in tags" :key="index">
+        <span>{{ tag }}</span>
         <Icon class="icon" name="right" />
       </li>
     </ol>
     <div class="btn-wrapper">
-      <button class="btn">新建标签</button>
+      <button class="btn" @click="create">新建标签</button>
     </div>
   </Layout>
 </template>
 
 <script>
+import tagListModel from "@/models/tagListModel";
+
 export default {
   name: "Tags",
-  components: {}
+  data() {
+    return {
+      tags: []
+    };
+  },
+  components: {},
+  created() {
+    const tagsData = tagListModel.fetch();
+    this.tags = tagsData;
+  },
+  methods: {
+    create() {
+      const name = window.prompt("请输入标签名");
+      if (name === "") {
+        window.alert("标签名不能为空");
+      } else {
+        this.tags.push(name);
+        tagListModel.save(this.tags);
+      }
+    }
+  }
 };
 </script>
 
