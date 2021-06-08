@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="wrapper">
     <ul class="types">
       <li :class="type === '-' && 'selected'" @click="selectType('-')">
         支出
@@ -34,6 +34,9 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+.wrapper {
+  background: #e7e7e7;
+}
 .types {
   display: flex;
   height: 64px;
@@ -41,7 +44,8 @@ export default defineComponent({
   .selected {
     color: cornflowerblue;
   }
-  > * {
+  > li {
+    cursor: pointer;
     text-align: center;
     width: 50%;
   }

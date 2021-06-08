@@ -61,6 +61,7 @@ export default {
   font-size: 14px;
   padding: 16px;
   flex: 1;
+  background: #fff;
   > .current {
     display: flex;
     > li {

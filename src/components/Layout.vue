@@ -23,6 +23,7 @@ export default {
   flex-direction: column;
   flex-grow: 1;
   overflow: auto;
+  background: #e5e5e5;
 }
 
 .nav-wrapper {

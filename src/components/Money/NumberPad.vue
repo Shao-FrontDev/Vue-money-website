@@ -110,5 +110,6 @@ export default {
   line-height: 72px;
   padding: 0 18px;
   text-align: right;
+  background: #fff;
 }
 </style>

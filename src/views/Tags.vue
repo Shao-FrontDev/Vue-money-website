@@ -30,7 +30,7 @@ export default {
 <style lang="scss" scoped>
 .tags {
   padding-left: 14px;
-  background: #fff;
+  background: rgb(255, 255, 255);
   font-size: 16px;
 
   > li {

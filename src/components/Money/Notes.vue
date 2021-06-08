@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="wrapper">
     <label class="notes">
       <span class="name">备注</span>
       <input
@@ -26,6 +26,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.wrapper {
+  background: #fff;
+}
 .notes {
   height: 64px;
   line-height: 64px;
