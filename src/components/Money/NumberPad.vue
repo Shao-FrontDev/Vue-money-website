@@ -16,7 +16,7 @@
         <button @click="inputContent">7</button>
         <button @click="inputContent">8</button>
         <button @click="inputContent">9</button>
-        <button class="ok">OK</button>
+        <button class="ok" @click="updateData">OK</button>
         <button class="zero" @click="inputContent">0</button>
         <button @click="inputContent">.</button>
       </div>
@@ -60,6 +60,9 @@ export default {
 
     clear() {
       this.output = "0";
+    },
+    updateData() {
+      this.$emit("updateData");
     }
   }
 };

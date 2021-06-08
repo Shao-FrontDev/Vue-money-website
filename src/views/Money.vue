@@ -1,13 +1,17 @@
 <template>
   <Layout>
-    <Types @update:selectedType="onUpdateType" />
+    {{ record }}
+    <Types @update:selectedType="onUpdateType" :type="record.type" />
     <Tags
       @update:dataSource="updateData"
       :dataSource="tags"
       @update:selectedTags="onUpdateTags"
     />
-    <Notes v-model:value="selectedNotes" />
-    <NumberPad @update:selectedAmount="onUpdateAmount" />
+    <Notes v-model:value="record.selectedNotes" />
+    <NumberPad
+      @update:selectedAmount="onUpdateAmount"
+      @updateData="selectedData"
+    />
   </Layout>
 </template>
 
@@ -28,10 +32,12 @@ export default {
       output: "200",
       active: false,
       tags: ["衣", "食", "住", "行", "其他"],
-      selectedTags: [],
-      selectedNotes: "",
-      selectedType: "",
-      selectedAmount: ""
+      record: {
+        selectedTags: [],
+        selectedNotes: "",
+        selectedType: "-",
+        selectedAmount: ""
+      }
     };
   },
   methods: {
@@ -42,19 +48,21 @@ export default {
       this.active = !this.active;
     },
     updateData(tags) {
-      this.tags = tags;
+      this.record.tags = tags;
     },
     onUpdateTags(tags) {
-      this.selectedTags = tags;
+      this.record.selectedTags = tags;
     },
 
     onUpdateType(type) {
-      console.log("selectedType", this.selectedNotes);
-      this.selectedType = type;
+      this.record.selectedType = type;
     },
     onUpdateAmount(amount) {
-      this.selectedAmount = amount;
+      this.record.selectedAmount = amount;
       console.log("selectedAmount", amount);
+    },
+    selectedData() {
+      console.log("record", this.record);
     }
   }
 };
