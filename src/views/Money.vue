@@ -15,10 +15,12 @@
 </template>
 
 <script>
+import model from "./model";
 import NumberPad from "@/components/Money/NumberPad.vue";
 import Tags from "@/components/Money/Tags.vue";
 import Types from "@/components/Money/Types.vue";
 import Notes from "@/components/Money/Notes.vue";
+
 export default {
   components: {
     NumberPad,
@@ -37,7 +39,7 @@ export default {
         selectedType: "-",
         selectedAmount: 0
       },
-      recordList: JSON.parse(localStorage.getItem("recordList")) || []
+      recordList: model.fetch()
     };
   },
   methods: {
@@ -63,16 +65,15 @@ export default {
       "selectedAmount", amount;
     },
     saveRecord() {
-      this.record.selectedNotes = "";
-      const recordCopy = JSON.parse(JSON.stringify(this.record));
+      const recordCopy = model.clone(this.record);
       this.recordList.push(recordCopy);
-      console.log(this.recordList);
+      this.record.selectedNotes = "";
     }
   },
   watch: {
     "recordList.length": {
       handler() {
-        localStorage.setItem("recordList", JSON.stringify(this.recordList));
+        model.save(this.recordList);
       }
     }
   }
