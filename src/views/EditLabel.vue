@@ -1,11 +1,28 @@
 <template>
   <Layout>
-    <div>编辑标签</div>
+    <div>{{ tag.content }}</div>
   </Layout>
 </template>
 
 <script>
-export default {};
+import tagListModel from "@/models/tagListModel";
+
+export default {
+  data() {
+    return {
+      tag: null
+    };
+  },
+  created() {
+    const id = this.$route.params.id;
+    const tags = tagListModel.fetch();
+    this.tag = tags.filter(t => t.id === id)[0];
+    console.log(this.tag);
+    if (!this.tag) {
+      this.$router.push("/404");
+    }
+  }
+};
 </script>
 
 <style></style>

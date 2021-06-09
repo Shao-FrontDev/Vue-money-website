@@ -21,7 +21,7 @@ const routes: Array<RouteRecordRaw> = [
     name: "Labels",
     component: Labels
   },
-  { path: "/labels/edit", component: EditLabel },
+  { path: "/labels/edit/:id", component: EditLabel },
 
   {
     path: "/statistics",
@@ -30,7 +30,7 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: "/:pathMatch(.*)*",
-    name: "NotFound",
+    name: "404",
     component: NotFound
   }
 ];
