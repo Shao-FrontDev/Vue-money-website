@@ -1,6 +1,6 @@
 <template>
   <div class="nav">
-    <router-link to="tags" active-class="selected" class="item">
+    <router-link to="labels" active-class="selected" class="item">
       <Icon class="icon" name="label" />
       <span>
         标签

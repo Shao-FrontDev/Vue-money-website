@@ -1,8 +1,8 @@
 <template>
   <Layout>
     <ol class="tags">
-      <li v-for="(tag, index) in tags" :key="index">
-        <span>{{ tag }}</span>
+      <li v-for="tag in tags" :key="tag.id">
+        <span>{{ tag.content }}</span>
         <Icon class="icon" name="right" />
       </li>
     </ol>
@@ -33,8 +33,17 @@ export default {
       if (name === "") {
         window.alert("标签名不能为空");
       } else {
-        this.tags.push(name);
-        tagListModel.save(this.tags);
+        if (this.tags.includes(name)) {
+          alert("标签已经存在");
+          return;
+        } else {
+          const tag = {
+            content: name,
+            id: name
+          };
+          this.tags.push(tag);
+          tagListModel.save(this.tags);
+        }
       }
     }
   }

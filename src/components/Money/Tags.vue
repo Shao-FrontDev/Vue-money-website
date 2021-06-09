@@ -7,7 +7,7 @@
         @click="toggle(tag)"
         :class="{ selected: selectedTags.indexOf(tag) >= 0 }"
       >
-        {{ tag }}
+        {{ tag.content }}
       </li>
     </ul>
     <div class="new">
@@ -49,7 +49,11 @@ export default {
       if (name === "") {
         window.alert("标签名不能为空");
       } else if (this.dataSource) {
-        this.$emit("update:dataSource", [...this.dataSource, name]);
+        const tag = {
+          content: name,
+          id: name
+        };
+        this.$emit("update:dataSource", [...this.dataSource, tag]);
       }
     }
   }

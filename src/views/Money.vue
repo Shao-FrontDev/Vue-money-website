@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import recordListModel from "@/models/recordList";
+import recordListModel from "@/models/recordListModel";
 import tagListModel from "@/models/tagListModel";
 import NumberPad from "@/components/Money/NumberPad.vue";
 import Tags from "@/components/Money/Tags.vue";

@@ -1,9 +1,8 @@
 const localStorageKeyName = "tagList";
 const tagListModel = {
   fetch() {
-    const result = JSON.parse(
-      window.localStorage.getItem(localStorageKeyName)
-    ) || ["Hello world"];
+    const result =
+      JSON.parse(window.localStorage.getItem(localStorageKeyName)) || [];
 
     return result;
   },
