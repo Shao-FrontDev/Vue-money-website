@@ -4,6 +4,7 @@ import Labels from "../views/Labels.vue";
 import Statistics from "../views/Statistics.vue";
 import NotFound from "../views/NotFound.vue";
 import EditLabel from "../views/EditLabel.vue";
+import Home from "../views/Home.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -16,6 +17,7 @@ const routes: Array<RouteRecordRaw> = [
     name: "Money",
     component: Money
   },
+  { path: "/home", name: "Home", component: Home },
   {
     path: "/labels",
     name: "Labels",

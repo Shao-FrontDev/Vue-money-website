@@ -35,6 +35,8 @@ export default {
 body {
   background: white;
   font-family: $font-hei;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .home {
