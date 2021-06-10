@@ -20,12 +20,13 @@
 <script>
 import tagListModel from "@/models/tagListModel";
 import Button from "@/components/Button.vue";
+import { v4 as uuidv4 } from "uuid";
 
 export default {
   name: "Tags",
   data() {
     return {
-      tags: []
+      tags: null
     };
   },
   components: { Button },
@@ -40,15 +41,18 @@ export default {
       if (name?.trim() === "") {
         window.alert("标签名不能为空");
       } else {
-        if (this.tags.includes(name)) {
+        const isExist = this.tags.findIndex(
+          element => element.content === name
+        );
+        console.log(isExist);
+        if (isExist !== -1) {
           alert("标签已经存在");
           return;
         } else {
           const tag = {
             content: name,
-            id: name
+            id: uuidv4()
           };
-          console.log(name);
           this.tags.push(tag);
           tagListModel.save(this.tags);
         }

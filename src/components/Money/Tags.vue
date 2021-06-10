@@ -20,6 +20,8 @@
 </template>
 
 <script>
+import { v4 as uuidv4 } from "uuid";
+
 export default {
   name: "Tags",
   props: {
@@ -47,14 +49,23 @@ export default {
     },
     create() {
       const name = window.prompt("请输入标签名");
-      if (name === "") {
+      if (name === null) return;
+      if (name?.trim() === "") {
         window.alert("标签名不能为空");
-      } else if (this.dataSource) {
-        const tag = {
-          content: name,
-          id: name
-        };
-        this.$emit("update:dataSource", [...this.dataSource, tag]);
+      } else {
+        const isExist = this.dataSource.findIndex(
+          element => element.content === name
+        );
+        if (isExist !== -1) {
+          alert("标签已经存在");
+          return;
+        } else if (this.dataSource) {
+          const tag = {
+            content: name,
+            id: uuidv4()
+          };
+          this.$emit("update:dataSource", [...this.dataSource, tag]);
+        }
       }
     }
   }

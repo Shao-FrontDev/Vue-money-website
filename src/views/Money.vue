@@ -1,6 +1,5 @@
 <template>
   <Layout>
-    {{ record }}
     <Types @update:selectedType="onUpdateType" :type="record.selectedType" />
     <Tags
       @update:dataSource="updateData"
