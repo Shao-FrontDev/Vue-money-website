@@ -4,7 +4,7 @@
       <span>{{ output || 0 }}</span>
     </div>
     <div class="numberPad">
-      <div class="buttons">
+      <div class="numberPad__buttons">
         <button @click="inputContent">1</button>
         <button @click="inputContent">2</button>
         <button @click="inputContent">3</button>
@@ -82,7 +82,7 @@ export default {
 <style lang="scss" scoped>
 .numberPad {
   min-height: 256px;
-  .buttons {
+  &__buttons {
     display: grid;
     grid-template-columns: repeat(4, auto);
     button {

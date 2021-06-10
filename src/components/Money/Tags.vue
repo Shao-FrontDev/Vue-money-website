@@ -1,16 +1,17 @@
 <template>
   <div class="tags">
-    <ul class="current">
+    <ul class="tags__links">
       <li
         v-for="tag in dataSource"
         :key="tag.id"
         @click="toggle(tag)"
         :class="{ selected: selectedTags.indexOf(tag) >= 0 }"
+        class="tags__links__link"
       >
         {{ tag.content }}
       </li>
     </ul>
-    <div class="new">
+    <div class="tags__create-button">
       <button @click="create">
         新增标签
       </button>
@@ -66,10 +67,10 @@ export default {
   padding: 16px;
   flex: 1;
   background: #fff;
-  > .current {
+  &__links {
     display: flex;
     flex-wrap: wrap;
-    > li {
+    &__link {
       background: #d9d9d9;
       $h: 24px;
       height: $h;
@@ -83,7 +84,7 @@ export default {
       }
     }
   }
-  > .new {
+  &__create-button {
     padding-top: 16px;
     button {
       cursor: pointer;
