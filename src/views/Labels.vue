@@ -28,6 +28,7 @@ export default {
       tags: null
     };
   },
+  inject: ["reload"],
   components: { Button },
   created() {
     const tagsData = tagListModel.fetch();
@@ -37,6 +38,7 @@ export default {
     create() {
       const name = window.prompt("请输入标签名");
       tagListModel.create(name);
+      this.reload();
     }
   }
 };
