@@ -29,6 +29,10 @@ const tagListModel = {
         this.save(this.data);
       }
     }
+  },
+  delete(id) {
+    const newData = this.data.filter(tag => tag.id !== id);
+    this.save(newData);
   }
 };
 

@@ -44,8 +44,7 @@ export default {
       this.$router.push({ name: "Labels" });
     },
     deleteTag() {
-      const newTags = this.tags.filter(tag => tag.id !== this.id);
-      tagListModel.save(newTags);
+      tagListModel.delete(this.id);
       this.$router.push({ name: "Labels" });
     },
     handlerChange(e) {
