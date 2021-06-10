@@ -8,7 +8,7 @@
       filedName="标签名"
       placeholder="请输入标签名"
       :value="tag.content"
-      @change="handlerChange"
+      @change="updateTag"
     />
     <div class="marigin-top">
       <Button @click="deleteTag">删除标签</Button>
@@ -47,11 +47,8 @@ export default {
       tagListModel.delete(this.id);
       this.$router.push({ name: "Labels" });
     },
-    handlerChange(e) {
-      const filterTags = this.tags.filter(tag => tag.id !== this.id);
-      const tag = { id: this.id, content: e.target.value };
-      const newTags = [...filterTags, tag];
-      tagListModel.save(newTags);
+    updateTag(e) {
+      tagListModel.update(this.id, e.target.value);
     }
   }
 };

@@ -36,7 +36,7 @@ const tagListModel = {
   },
   update(id, content) {
     const filterData = this.data.filter(tag => tag.id !== id);
-    const data = { id: this.id, content: content };
+    const data = { id, content };
     const newData = [...filterData, data];
     this.save(newData);
   }
