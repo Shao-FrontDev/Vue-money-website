@@ -5,6 +5,9 @@
       <span>编辑标签</span>
     </div>
     <FormItem filedName="标签名" placeholder="请输入标签名" />
+    <div class="marigin-top">
+      <Button>删除标签</Button>
+    </div>
   </Layout>
 </template>
 
@@ -12,9 +15,10 @@
 import tagListModel from "@/models/tagListModel";
 import Icon from "@/components/Icon.vue";
 import FormItem from "@/components/Money/FormItem.vue";
+import Button from "@/components/Button.vue";
 
 export default {
-  components: { Icon, FormItem },
+  components: { Icon, FormItem, Button },
   data() {
     return {
       tag: null
@@ -32,4 +36,10 @@ export default {
 };
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+.marigin-top {
+  margin-top: 44px;
+  display: flex;
+  justify-content: center;
+}
+</style>

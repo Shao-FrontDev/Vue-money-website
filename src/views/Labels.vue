@@ -11,14 +11,15 @@
         <Icon class="icon" name="right" />
       </router-link>
     </ol>
-    <div class="btn-wrapper">
-      <button class="btn" @click="create">新建标签</button>
+    <div class="wrapper">
+      <Button @click="create">新建标签</Button>
     </div>
   </Layout>
 </template>
 
 <script>
 import tagListModel from "@/models/tagListModel";
+import Button from "@/components/Button.vue";
 
 export default {
   name: "Tags",
@@ -27,14 +28,14 @@ export default {
       tags: []
     };
   },
-  components: {},
+  components: { Button },
   created() {
     const tagsData = tagListModel.fetch();
     this.tags = tagsData;
   },
   methods: {
     create() {
-      const name = window.prompt("请输入标签名");
+      const name = window.prompt("请输入标签名").trim();
       if (name === "") {
         window.alert("标签名不能为空");
       } else {
@@ -74,17 +75,9 @@ export default {
   }
 }
 
-.btn-wrapper {
+.wrapper {
   margin-top: 44px;
   display: flex;
   justify-content: center;
-  .btn {
-    border: none;
-    background-color: #767676;
-    font-size: 18px;
-    padding: 8px 16px;
-    color: #fff;
-    cursor: pointer;
-  }
 }
 </style>
