@@ -1,13 +1,20 @@
 <template>
   <Layout>
-    <div>{{ tag.content }}</div>
+    <div>
+      <Icon name="left" />
+      <span>编辑标签</span>
+    </div>
+    <FormItem filedName="标签名" placeholder="请输入标签名" />
   </Layout>
 </template>
 
 <script>
 import tagListModel from "@/models/tagListModel";
+import Icon from "@/components/Icon.vue";
+import FormItem from "@/components/Money/FormItem.vue";
 
 export default {
+  components: { Icon, FormItem },
   data() {
     return {
       tag: null

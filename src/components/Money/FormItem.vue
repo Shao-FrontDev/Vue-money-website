@@ -1,10 +1,10 @@
 <template>
   <div class="wrapper">
     <label class="notes">
-      <span class="name">备注</span>
+      <span class="name">{{ filedName }}</span>
       <input
         type="text"
-        placeholder="在这里添加备注"
+        :placeholder="placeholder"
         :value="value"
         @input="$emit('update:value', $event.target.value)"
       />
@@ -19,7 +19,9 @@ export default {
     event: "update:value"
   },
   props: {
-    value: String
+    value: String,
+    filedName: { type: String, required: true },
+    placeholder: { type: String, defalut: "" }
   },
   emits: ["update:value"]
 };

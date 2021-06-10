@@ -1,12 +1,17 @@
 <template>
   <Layout>
+    {{ record }}
     <Types @update:selectedType="onUpdateType" :type="record.selectedType" />
     <Tags
       @update:dataSource="updateData"
       :dataSource="tags"
       @update:selectedTags="onUpdateTags"
     />
-    <Notes v-model:value="record.selectedNotes" />
+    <FormItem
+      v-model:value="record.selectedNotes"
+      filedName="备注"
+      placeholder="在这里输入备注"
+    />
     <NumberPad
       @update:selectedAmount="onUpdateAmount"
       @updateData="saveRecord"
@@ -20,14 +25,14 @@ import tagListModel from "@/models/tagListModel";
 import NumberPad from "@/components/Money/NumberPad.vue";
 import Tags from "@/components/Money/Tags.vue";
 import Types from "@/components/Money/Types.vue";
-import Notes from "@/components/Money/Notes.vue";
+import FormItem from "@/components/Money/FormItem.vue";
 
 export default {
   components: {
     NumberPad,
     Tags,
     Types,
-    Notes
+    FormItem
   },
   data() {
     return {
