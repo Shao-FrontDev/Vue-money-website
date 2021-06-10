@@ -4,7 +4,7 @@
       <span class="form-item__notes__title">{{ filedName }}</span>
       <input
         type="text"
-        class="form-itme__notes__input"
+        class="form-item__notes__input"
         :placeholder="placeholder"
         :value="value"
         @input="$emit('update:value', $event.target.value)"
