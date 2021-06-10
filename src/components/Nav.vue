@@ -1,19 +1,31 @@
 <template>
   <div class="nav">
-    <router-link to="/labels" active-class="selected" class="item">
-      <Icon class="icon" name="label" />
+    <router-link
+      to="/labels"
+      active-class="nav__item--selected"
+      class="nav__item"
+    >
+      <Icon class="nav__item__icon" name="label" />
       <span>
         标签
       </span>
     </router-link>
-    <router-link to="/money" active-class="selected" class="item">
-      <Icon class="icon" name="money" />
+    <router-link
+      to="/money"
+      active-class="nav__item--selected"
+      class="nav__item"
+    >
+      <Icon class="nav__item__icon" name="money" />
       <span>
         记一笔
       </span>
     </router-link>
-    <router-link to="/statistics" active-class="selected" class="item">
-      <Icon class="icon" name="statistics" />
+    <router-link
+      to="/statistics"
+      active-class="nav__item--selected"
+      class="nav__item"
+    >
+      <Icon class="nav__item__icon" name="statistics" />
       <span>
         统计
       </span>
@@ -51,20 +63,20 @@ export default {
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.25);
   background-color: #fff;
   font-size: 12px;
-  > .item {
+  &__item {
     padding: 2px 0;
     flex-grow: 1;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    .icon {
+    &--selected {
+      color: $color-hightlight;
+    }
+    &__icon {
       width: 32px;
       height: 32px;
     }
-  }
-  > .item.selected {
-    color: $color-hightlight;
   }
 }
 </style>

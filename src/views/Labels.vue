@@ -5,7 +5,7 @@
         v-for="tag in tags"
         :key="tag.id"
         :to="`/labels/edit/${tag.id}`"
-        class="tag"
+        class="tags__item"
       >
         <span>{{ tag.content }}</span>
         <Icon class="icon" name="right" />
@@ -64,7 +64,7 @@ export default {
   background: rgb(255, 255, 255);
   font-size: 16px;
 
-  > .tag {
+  &__item {
     display: flex;
     padding: 10px 8px 10px 0px;
     box-shadow: inset 0px -0.5px 0px #bcbbc1;
