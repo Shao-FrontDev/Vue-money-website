@@ -1,6 +1,6 @@
 <template>
   <div class="nav-wrapper">
-    <div class="content">
+    <div class="nav-wrapper__content">
       <slot></slot>
     </div>
 
@@ -18,17 +18,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.content {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  overflow: auto;
-  background: #e5e5e5;
-}
-
 .nav-wrapper {
   display: flex;
   flex-direction: column;
   height: 100vh;
+  &__content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    overflow: auto;
+    background: #e5e5e5;
+  }
 }
 </style>
