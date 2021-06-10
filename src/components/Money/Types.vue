@@ -1,10 +1,18 @@
 <template>
   <div class="wrapper">
-    <ul class="types">
-      <li :class="type === '-' && 'selected'" @click="selectType('-')">
+    <ul class="wrapper__types">
+      <li
+        :class="type === '-' && 'wrapper__types__link--selected'"
+        @click="selectType('-')"
+        class="wrapper__types__link"
+      >
         支出
       </li>
-      <li :class="type === '+' && 'selected'" @click="selectType('+')">
+      <li
+        :class="type === '+' && 'wrapper__types__link--selected'"
+        @click="selectType('+')"
+        class="wrapper__types__link"
+      >
         收入
       </li>
     </ul>
@@ -34,20 +42,25 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+@import "~@/assets/styles/helper.scss";
+
 .wrapper {
   background: #e7e7e7;
-}
-.types {
-  display: flex;
-  height: 64px;
-  line-height: 64px;
-  .selected {
-    color: cornflowerblue;
-  }
-  > li {
-    cursor: pointer;
-    text-align: center;
-    width: 50%;
+  &__types {
+    display: flex;
+    height: 64px;
+    line-height: 64px;
+    .selected {
+      color: cornflowerblue;
+    }
+    &__link {
+      cursor: pointer;
+      text-align: center;
+      width: 50%;
+      &--selected {
+        color: $color-hightlight;
+      }
+    }
   }
 }
 </style>
