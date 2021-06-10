@@ -5,20 +5,52 @@
     </div>
     <div class="numberPad">
       <div class="numberPad__buttons">
-        <button @click="inputContent">1</button>
-        <button @click="inputContent">2</button>
-        <button @click="inputContent">3</button>
-        <button @click="deleteNumber">删除</button>
-        <button @click="inputContent">4</button>
-        <button @click="inputContent">5</button>
-        <button @click="inputContent">6</button>
-        <button @click="clear">清空</button>
-        <button @click="inputContent">7</button>
-        <button @click="inputContent">8</button>
-        <button @click="inputContent">9</button>
-        <button class="ok" @click="updateData">OK</button>
-        <button class="zero" @click="inputContent">0</button>
-        <button @click="inputContent">.</button>
+        <button @click="inputContent" class="numberPad__buttons__item">
+          1
+        </button>
+        <button @click="inputContent" class="numberPad__buttons__item">
+          2
+        </button>
+        <button @click="inputContent" class="numberPad__buttons__item">
+          3
+        </button>
+        <button @click="deleteNumber" class="numberPad__buttons__item">
+          删除
+        </button>
+        <button @click="inputContent" class="numberPad__buttons__item">
+          4
+        </button>
+        <button @click="inputContent" class="numberPad__buttons__item">
+          5
+        </button>
+        <button @click="inputContent" class="numberPad__buttons__item">
+          6
+        </button>
+        <button @click="clear" class="numberPad__buttons__item">清空</button>
+        <button @click="inputContent" class="numberPad__buttons__item">
+          7
+        </button>
+        <button @click="inputContent" class="numberPad__buttons__item">
+          8
+        </button>
+        <button @click="inputContent" class="numberPad__buttons__item">
+          9
+        </button>
+        <button
+          class="numberPad__buttons__item numberPad__buttons__item--ok"
+          @click="updateData"
+        >
+          OK
+        </button>
+        <button
+          class="numberPad__buttons__item  numberPad__buttons__item--zero"
+          @click="inputContent"
+        >
+          0
+        </button>
+        <button @click="inputContent" class="numberPad__buttons__item">
+          .
+        </button>
       </div>
     </div>
   </div>
@@ -85,21 +117,21 @@ export default {
   &__buttons {
     display: grid;
     grid-template-columns: repeat(4, auto);
-    button {
+    &__item {
       border: none;
       height: 64px;
       background-color: cornflowerblue;
       cursor: pointer;
-    }
-    .ok {
-      grid-column: 4 / 5;
-      grid-row-start: 3;
-      grid-row-end: 5;
-      height: auto;
-    }
-    .zero {
-      grid-column-start: 1;
-      grid-column-end: 3;
+      &--ok {
+        grid-column: 4 / 5;
+        grid-row-start: 3;
+        grid-row-end: 5;
+        height: auto;
+      }
+      &--zero {
+        grid-column-start: 1;
+        grid-column-end: 3;
+      }
     }
   }
 }
