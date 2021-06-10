@@ -36,6 +36,7 @@ export default {
   methods: {
     create() {
       const name = window.prompt("请输入标签名");
+      if (name === null) return;
       if (name?.trim() === "") {
         window.alert("标签名不能为空");
       } else {
@@ -47,6 +48,7 @@ export default {
             content: name,
             id: name
           };
+          console.log(name);
           this.tags.push(tag);
           tagListModel.save(this.tags);
         }

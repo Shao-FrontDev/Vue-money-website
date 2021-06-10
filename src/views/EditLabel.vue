@@ -8,6 +8,7 @@
       filedName="标签名"
       placeholder="请输入标签名"
       :value="tag.content"
+      @change="handlerChange"
     />
     <div class="marigin-top">
       <Button @click="deleteTag">删除标签</Button>
@@ -25,13 +26,15 @@ export default {
   components: { Icon, FormItem, Button },
   data() {
     return {
-      tag: null
+      tag: null,
+      id: null,
+      tags: null
     };
   },
   created() {
-    const id = this.$route.params.id;
-    const tags = tagListModel.fetch();
-    this.tag = tags.filter(t => t.id === id)[0];
+    this.id = this.$route.params.id;
+    this.tags = tagListModel.fetch();
+    this.tag = this.tags.filter(t => t.id === this.id)[0];
     if (!this.tag) {
       this.$router.push("/404");
     }
@@ -41,11 +44,15 @@ export default {
       this.$router.push({ name: "Labels" });
     },
     deleteTag() {
-      const id = this.$route.params.id;
-      const tags = tagListModel.fetch();
-      const newTags = tags.filter(tag => tag.id !== id);
+      const newTags = this.tags.filter(tag => tag.id !== this.id);
       tagListModel.save(newTags);
       this.$router.push({ name: "Labels" });
+    },
+    handlerChange(e) {
+      const filterTags = this.tags.filter(tag => tag.id !== this.id);
+      const tag = { id: this.id, content: e.target.value };
+      const newTags = [...filterTags, tag];
+      tagListModel.save(newTags);
     }
   }
 };
