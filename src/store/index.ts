@@ -55,9 +55,15 @@ export default createStore({
       const filterTags = (state.tags as Array<ITag>).filter(
         tag => tag.id !== payload.id
       );
+      console.log(payload);
       const tag: ITag = { id: payload.id, content: payload.content };
       const newTags = [...filterTags, tag];
-      window.localStorage.setItem(localStorageKeyName, JSON.stringify(newTags));
+      console.log(newTags);
+      state.tags = [...filterTags, tag];
+      window.localStorage.setItem(
+        localStorageKeyName,
+        JSON.stringify(state.tags)
+      );
     }
   },
   actions: {},

@@ -8,7 +8,7 @@
       filedName="标签名"
       placeholder="请输入标签名"
       :value="tag.content"
-      @change="updateTag"
+      @change="update"
     />
     <div class="marigin-top">
       <Button @click="deleteTag">删除标签</Button>
@@ -17,6 +17,7 @@
 </template>
 
 <script>
+import { mapGetters, mapMutations } from "vuex";
 import Icon from "@/components/Icon.vue";
 import FormItem from "@/components/Money/FormItem.vue";
 import Button from "@/components/Button.vue";
@@ -32,6 +33,7 @@ export default {
     this.id = this.$route.params.id;
   },
   methods: {
+    ...mapMutations(["updateTag"]),
     back() {
       this.$router.push({ name: "Labels" });
     },
@@ -39,8 +41,10 @@ export default {
       this.$store.commit("deleteTag", this.id);
       this.$router.push({ name: "Labels" });
     },
-    updateTag() {
-      console.log("update");
+    update(e) {
+      console.log(e.target.value);
+      const tag = { id: this.id, content: e.target.value };
+      this.updateTag(tag);
     }
   },
   computed: {

@@ -4,7 +4,7 @@
     <Types @update:selectedType="onUpdateType" :type="record.selectedType" />
     <Tags
       @update:dataSource="updateData"
-      :dataSource="tags"
+      :dataSource="tagList"
       @update:selectedTags="onUpdateTags"
     />
     <FormItem
@@ -20,6 +20,8 @@
 </template>
 
 <script>
+import { mapGetters, mapMutations } from "vuex";
+
 import NumberPad from "@/components/Money/NumberPad.vue";
 import Tags from "@/components/Money/Tags.vue";
 import Types from "@/components/Money/Types.vue";
@@ -47,14 +49,15 @@ export default {
     };
   },
   methods: {
+    ...mapMutations(["createTag"]),
     clear() {
       this.output = ``;
     },
     changeState() {
       this.active = !this.active;
     },
-    updateData(tags) {
-      this.tags = tags;
+    updateData(tag) {
+      this.createTag(tag);
     },
 
     onUpdateTags(tags) {
@@ -86,6 +89,9 @@ export default {
   },
   created() {
     console.log("repro");
+  },
+  computed: {
+    ...mapGetters(["tagList"])
   }
 };
 </script>
