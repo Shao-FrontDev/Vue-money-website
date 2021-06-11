@@ -25,26 +25,31 @@ export default {
   components: { Icon, FormItem, Button },
   data() {
     return {
-      tag: null,
-      id: null,
-      tags: null
+      id: null
     };
   },
   created() {
     this.id = this.$route.params.id;
-    this.tag = this.tags.filter(t => t.id === this.id)[0];
-    if (!this.tag) {
-      this.$router.push("/404");
-    }
   },
   methods: {
     back() {
       this.$router.push({ name: "Labels" });
     },
     deleteTag() {
+      this.$store.commit("deleteTag", this.id);
       this.$router.push({ name: "Labels" });
     },
-    updateTag() {}
+    updateTag() {
+      console.log("update");
+    }
+  },
+  computed: {
+    tag() {
+      const tag = this.$store.getters.tagList.filter(
+        item => item.id === this.id
+      )[0];
+      return tag;
+    }
   }
 };
 </script>

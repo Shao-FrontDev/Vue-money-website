@@ -23,6 +23,7 @@ export default {
       this.$nextTick(() => {
         this.isRouterAlive = true;
       });
+      console.log("run reload");
     }
   }
 };

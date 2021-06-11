@@ -9,9 +9,9 @@ interface ITag {
 
 export default createStore({
   state: {
-    tags: window.localStorage.getItem(localStorageKeyName) || [
-      { id: uuidv4(), content: "Learing React" }
-    ]
+    tags:
+      JSON.parse(window.localStorage.getItem(localStorageKeyName) as string) ||
+      []
   },
   mutations: {
     createTag(state, name) {
@@ -42,11 +42,16 @@ export default createStore({
         }
       }
     },
-    delete(state, id) {
+    deleteTag(state, id) {
+      console.log("deltetag");
       const newTags = (state.tags as Array<ITag>).filter(tag => tag.id !== id);
-      window.localStorage.setItem(localStorageKeyName, JSON.stringify(newTags));
+      state.tags = newTags;
+      window.localStorage.setItem(
+        localStorageKeyName,
+        JSON.stringify(state.tags)
+      );
     },
-    update(state, payload) {
+    updateTag(state, payload) {
       const filterTags = (state.tags as Array<ITag>).filter(
         tag => tag.id !== payload.id
       );
