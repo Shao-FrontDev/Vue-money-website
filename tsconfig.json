@@ -33,7 +33,7 @@
     "src/**/*.vue",
     "tests/**/*.ts",
     "tests/**/*.tsx"
-, "src/models/tagListModel.js"  ],
+, "src/models/tagListModel.js", "src/store/index.ts"  ],
   "exclude": [
     "node_modules"
   ]

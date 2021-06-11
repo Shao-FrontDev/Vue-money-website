@@ -2,7 +2,7 @@
   <Layout>
     <ol class="tags">
       <router-link
-        v-for="tag in tags"
+        v-for="tag in tagList"
         :key="tag.id"
         :to="`/labels/edit/${tag.id}`"
         class="tags__item"
@@ -18,7 +18,6 @@
 </template>
 
 <script>
-import tagListModel from "@/models/tagListModel";
 import Button from "@/components/Button.vue";
 
 export default {
@@ -31,13 +30,20 @@ export default {
   inject: ["reload"],
   components: { Button },
   created() {
-    const tagsData = tagListModel.fetch();
-    this.tags = tagsData;
+    // const tagsData = tagListModel.fetch();
+    // this.tags = tagsData;
+  },
+  computed: {
+    tagList() {
+      return this.$store.getters.tagList;
+    }
   },
   methods: {
     create() {
       const name = window.prompt("请输入标签名");
-      tagListModel.create(name);
+      // tagListModel.create(name);
+      console.log("start");
+      this.$store.commit("createTag", name);
       this.reload();
     }
   }
