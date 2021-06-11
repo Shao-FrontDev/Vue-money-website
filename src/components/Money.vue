@@ -1,5 +1,6 @@
 <template>
   <div class="wrapper">
+    {{ record }}
     <Types @update:selectedType="onUpdateType" :type="record.selectedType" />
     <Tags
       @update:dataSource="updateData"

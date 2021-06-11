@@ -66,16 +66,22 @@ export default {
   },
   methods: {
     inputContent(event) {
-      const button = event.target;
-      const input = button.textContent;
+      const input = event.target.innerText;
 
+      if (input.length >= 16) return;
+      if (this.output.includes(".") && input === ".") return;
       if (this.output === "0") {
         if ("0123456789".indexOf(input) >= 0) {
           this.output = input;
+          this.$emit("update:selectedAmount", this.output);
         } else {
           this.output += input;
+          this.$emit("update:selectedAmount", this.output);
         }
+        return;
       }
+      this.output += input;
+      this.$emit("update:selectedAmount", this.output);
     },
     deleteNumber() {
       const result = this.output.substr(0, this.output.length - 1);
@@ -93,7 +99,6 @@ export default {
       this.$emit("update:selectedAmount", this.output);
     },
     updateData() {
-      this.output = "0";
       this.$emit("updateData");
     }
   }
