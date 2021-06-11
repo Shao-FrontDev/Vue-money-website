@@ -1,5 +1,6 @@
 <template>
   <div class="wrapper">
+    <button class="wrapper__button" @click="handlerAnimation">Close</button>
     <ul class="wrapper__types">
       <li
         :class="type === '-' && 'wrapper__types__link--selected'"
@@ -20,6 +21,7 @@
 </template>
 
 <script lang="ts">
+import { mapMutations } from "vuex";
 import { defineComponent } from "vue";
 
 export default defineComponent({
@@ -36,6 +38,11 @@ export default defineComponent({
       }
       this.type = type;
       this.$emit("update:selectedType", type);
+    },
+    ...mapMutations(["toggleAnimation"]),
+    handlerAnimation() {
+      console.log("toggle");
+      this.toggleAnimation(false);
     }
   }
 });
@@ -46,17 +53,31 @@ export default defineComponent({
 
 .wrapper {
   background: #e7e7e7;
+  position: relative;
+  &__button {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    cursor: pointer;
+    border: none;
+    background: #d94c1a;
+    border-radius: 16px;
+    color: white;
+    height: 50px;
+    width: 100px;
+  }
   &__types {
     display: flex;
     height: 64px;
     line-height: 64px;
+    justify-content: center;
     .selected {
       color: cornflowerblue;
     }
     &__link {
       cursor: pointer;
       text-align: center;
-      width: 50%;
+      width: 15%;
       &--selected {
         color: $color-hightlight;
       }

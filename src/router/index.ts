@@ -10,7 +10,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
     name: "home",
-    redirect: "/money"
+    redirect: "/home"
   },
   {
     path: "/money",

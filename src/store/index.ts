@@ -11,7 +11,8 @@ export default createStore({
   state: {
     tags:
       JSON.parse(window.localStorage.getItem(localStorageKeyName) as string) ||
-      []
+      [],
+    isAnimation: false
   },
   mutations: {
     createTag(state, name) {
@@ -64,6 +65,9 @@ export default createStore({
         localStorageKeyName,
         JSON.stringify(state.tags)
       );
+    },
+    toggleAnimation(state, payload) {
+      state.isAnimation = payload;
     }
   },
   actions: {},
@@ -71,6 +75,9 @@ export default createStore({
   getters: {
     tagList(state) {
       return state.tags;
+    },
+    isAnimation(state) {
+      return state.isAnimation;
     }
   }
 });

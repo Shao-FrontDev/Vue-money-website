@@ -6,20 +6,21 @@
         <button class="home__button" @click="handlerAnimation">记一笔</button>
       </div>
     </div>
-    <div class="record" :class="{ animation: isAnimation }"></div>
+    <div class="record" :class="{ animation: isAnimation }"><Money /></div>
   </Layout>
 </template>
 
 <script>
+import { mapGetters, mapMutations } from "vuex";
+import Money from "@/components/Money.vue";
 export default {
-  data() {
-    return {
-      isAnimation: false
-    };
-  },
+  components: { Money },
+  computed: { ...mapGetters(["isAnimation"]) },
   methods: {
+    ...mapMutations(["toggleAnimation"]),
     handlerAnimation() {
-      this.isAnimation = true;
+      console.log("toggle");
+      this.toggleAnimation(true);
     }
   }
 };
@@ -57,7 +58,7 @@ export default {
   position: absolute;
   height: 100vh;
   width: 100vw;
-  background-color: rgba($color: #000000, $alpha: 0.5);
+  /* background-color: rgba($color: #000000, $alpha: 0.5); */
   transition: all 1s ease-in-out;
   transform: translateY(100%);
 }

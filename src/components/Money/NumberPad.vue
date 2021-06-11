@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="output">
-      <span>{{ output || 0 }}</span>
+      <span>{{ output }}</span>
     </div>
     <div class="numberPad">
       <div class="numberPad__buttons">
@@ -66,27 +66,16 @@ export default {
   },
   methods: {
     inputContent(event) {
-      const button = event?.target;
+      const button = event.target;
       const input = button.textContent;
-
-      //限制计算器输出的长度
-      if (this.output.length === 16) return;
-      //限制计算器的点个数,如果已经有一个点再输入点就不行了
-      if (this.output.indexOf(".") >= 0 && input === ".") return;
 
       if (this.output === "0") {
         if ("0123456789".indexOf(input) >= 0) {
           this.output = input;
-          this.$emit("update:selectedAmount", this.output);
         } else {
           this.output += input;
-          this.$emit("update:selectedAmount", this.output);
         }
-        return;
       }
-
-      this.output += input;
-      this.$emit("update:selectedAmount", this.output);
     },
     deleteNumber() {
       const result = this.output.substr(0, this.output.length - 1);
@@ -120,7 +109,7 @@ export default {
     &__item {
       border: none;
       height: 64px;
-      background-color: cornflowerblue;
+      background-color: #d7d8c9;
       cursor: pointer;
       &--ok {
         grid-column: 4 / 5;

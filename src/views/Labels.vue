@@ -29,7 +29,6 @@ export default {
   },
   inject: ["reload"],
   components: { Button },
-  created() {},
   computed: {
     tagList() {
       return this.$store.getters.tagList;

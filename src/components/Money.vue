@@ -1,5 +1,5 @@
 <template>
-  <Layout>
+  <div class="wrapper">
     <Types @update:selectedType="onUpdateType" :type="record.selectedType" />
     <Tags
       @update:dataSource="updateData"
@@ -15,7 +15,7 @@
       @update:selectedAmount="onUpdateAmount"
       @updateData="saveRecord"
     />
-  </Layout>
+  </div>
 </template>
 
 <script>
@@ -96,4 +96,8 @@ export default {
 
 <style lang="scss" scoped>
 @import "~@/assets/styles/helper.scss";
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
 </style>

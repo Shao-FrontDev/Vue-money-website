@@ -11,7 +11,7 @@
       </span>
     </router-link>
     <router-link
-      to="/money"
+      to="/home"
       active-class="nav__item--selected"
       class="nav__item"
     >
