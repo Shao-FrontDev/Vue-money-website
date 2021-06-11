@@ -17,7 +17,6 @@
 </template>
 
 <script>
-import tagListModel from "@/models/tagListModel";
 import Icon from "@/components/Icon.vue";
 import FormItem from "@/components/Money/FormItem.vue";
 import Button from "@/components/Button.vue";
@@ -33,7 +32,6 @@ export default {
   },
   created() {
     this.id = this.$route.params.id;
-    this.tags = tagListModel.fetch();
     this.tag = this.tags.filter(t => t.id === this.id)[0];
     if (!this.tag) {
       this.$router.push("/404");
@@ -44,12 +42,9 @@ export default {
       this.$router.push({ name: "Labels" });
     },
     deleteTag() {
-      tagListModel.delete(this.id);
       this.$router.push({ name: "Labels" });
     },
-    updateTag(e) {
-      tagListModel.update(this.id, e.target.value);
-    }
+    updateTag() {}
   }
 };
 </script>

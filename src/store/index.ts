@@ -23,7 +23,7 @@ export default createStore({
       } else {
         const isExist = (state.tags as Array<ITag>).findIndex(
           element => element.content === name
-        );·
+        );
         console.log(isExist);
         if (isExist !== -1) {
           alert("标签已经存在");

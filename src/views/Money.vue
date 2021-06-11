@@ -1,5 +1,6 @@
 <template>
   <Layout>
+    {{ record }}
     <Types @update:selectedType="onUpdateType" :type="record.selectedType" />
     <Tags
       @update:dataSource="updateData"
@@ -19,8 +20,6 @@
 </template>
 
 <script>
-import recordListModel from "@/models/recordListModel";
-import tagListModel from "@/models/tagListModel";
 import NumberPad from "@/components/Money/NumberPad.vue";
 import Tags from "@/components/Money/Tags.vue";
 import Types from "@/components/Money/Types.vue";
@@ -70,29 +69,23 @@ export default {
       "selectedAmount", amount;
     },
     saveRecord() {
-      const recordCopy = recordListModel.clone(this.record);
-      this.recordList.push(recordCopy);
       this.record.selectedNotes = "";
     }
   },
   watch: {
     "recordList.length": {
       handler() {
-        recordListModel.save(this.recordList);
+        console.log("repro");
       }
     },
     "tags.length": {
       handler() {
-        console.log("tags");
-        tagListModel.save(this.tags);
+        console.log("repro");
       }
     }
   },
   created() {
-    const tagList = tagListModel.fetch();
-    const recordList = recordListModel.fetch();
-    this.tags = tagList;
-    this.recordList = recordList;
+    console.log("repro");
   }
 };
 </script>

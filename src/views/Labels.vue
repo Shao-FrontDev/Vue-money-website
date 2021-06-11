@@ -29,10 +29,7 @@ export default {
   },
   inject: ["reload"],
   components: { Button },
-  created() {
-    // const tagsData = tagListModel.fetch();
-    // this.tags = tagsData;
-  },
+  created() {},
   computed: {
     tagList() {
       return this.$store.getters.tagList;
@@ -41,7 +38,6 @@ export default {
   methods: {
     create() {
       const name = window.prompt("请输入标签名");
-      // tagListModel.create(name);
       console.log("start");
       this.$store.commit("createTag", name);
       this.reload();
