@@ -15,7 +15,7 @@ interface RecordItem {
   selectedNotes: String;
   selectedType: "-" | "+";
   selectedAmount: Number;
-  createAt?: any;
+  createAt?: String;
 }
 
 export const store = createStore({
@@ -85,8 +85,13 @@ export const store = createStore({
         ) || [];
     },
     createRecord(state, record) {
+      console.log("createRecord");
+      console.log(record);
+      for (let [key, value] of Object.entries(record)) {
+        console.log(key, value);
+      }
       const record2: RecordItem = clone(record);
-      record2.createAt = new Date();
+      record2.createAt = new Date().toISOString();
       state.recordList.push(record2);
       store.commit("saveRecords");
     },

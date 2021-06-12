@@ -1,5 +1,6 @@
 <template>
   <div class="wrapper">
+    {{ record }}
     <Types @update:selectedType="onUpdateType" :type="record.selectedType">
       <button class="wrapper__button">Close</button>
     </Types>
@@ -73,6 +74,8 @@ export default {
       this.record.selectedAmount = parseFloat(amount);
     },
     saveRecord() {
+      console.log("saveRecord", this.record);
+      this.$store.commit("createRecord", this.record);
       this.record.selectedNotes = "";
     }
   },
