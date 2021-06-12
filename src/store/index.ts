@@ -81,15 +81,10 @@ export const store = createStore({
     fetchRecords(state) {
       state.recordList =
         JSON.parse(
-          window.localStorage.getItem(localStorageTagsKeyName) as string
+          window.localStorage.getItem(localStorageRecordsKeyName) as string
         ) || [];
     },
     createRecord(state, record) {
-      console.log("createRecord");
-      console.log(record);
-      for (let [key, value] of Object.entries(record)) {
-        console.log(key, value);
-      }
       const record2: RecordItem = clone(record);
       record2.createAt = new Date().toISOString();
       state.recordList.push(record2);
@@ -110,6 +105,9 @@ export const store = createStore({
     },
     isAnimation(state) {
       return state.isAnimation;
+    },
+    recordList(state) {
+      return state.recordList;
     }
   }
 });

@@ -100,6 +100,7 @@ export default {
     },
     updateData() {
       this.$emit("updateData");
+      this.output = "0";
     }
   }
 };
