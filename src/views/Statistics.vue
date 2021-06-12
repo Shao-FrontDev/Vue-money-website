@@ -1,14 +1,10 @@
 <template>
-  <Layout>
-    <div>
-      Statistics
-    </div>
-  </Layout>
+  <Layout> </Layout>
 </template>
 
 <script>
 export default {
-  components: {}
+  components: {  }
 };
 </script>
 

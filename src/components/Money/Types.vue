@@ -1,6 +1,9 @@
 <template>
   <div class="wrapper">
-    <button class="wrapper__button" @click="handlerAnimation">Close</button>
+    <!-- <button class="wrapper__button" @click="handlerAnimation">Close</button> -->
+    <div v-if="$slots" @click="handlerAnimation">
+      <slot @click="handlerAnimation"></slot>
+    </div>
     <ul class="wrapper__types">
       <li
         :class="type === '-' && 'wrapper__types__link--selected'"

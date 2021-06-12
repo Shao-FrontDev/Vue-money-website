@@ -1,7 +1,8 @@
 <template>
   <div class="wrapper">
-    {{ record }}
-    <Types @update:selectedType="onUpdateType" :type="record.selectedType" />
+    <Types @update:selectedType="onUpdateType" :type="record.selectedType">
+      <button class="wrapper__button">Close</button>
+    </Types>
     <Tags
       @update:dataSource="updateData"
       :dataSource="tagList"
@@ -48,6 +49,7 @@ export default {
       recordList: null
     };
   },
+
   methods: {
     ...mapMutations(["createTag"]),
     clear() {
@@ -74,20 +76,9 @@ export default {
       this.record.selectedNotes = "";
     }
   },
-  watch: {
-    "recordList.length": {
-      handler() {
-        console.log("repro");
-      }
-    },
-    "tags.length": {
-      handler() {
-        console.log("repro");
-      }
-    }
-  },
+
   created() {
-    console.log("repro");
+    this.$store.commit("fetchTags");
   },
   computed: {
     ...mapGetters(["tagList"])
@@ -100,5 +91,17 @@ export default {
 .wrapper {
   display: flex;
   flex-direction: column;
+  &__button {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    cursor: pointer;
+    border: none;
+    background: #d94c1a;
+    border-radius: 16px;
+    color: white;
+    height: 50px;
+    width: 100px;
+  }
 }
 </style>
