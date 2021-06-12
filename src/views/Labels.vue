@@ -29,6 +29,9 @@ export default {
   },
   inject: ["reload"],
   components: { Button },
+  created() {
+    this.$store.commit("fetchTags");
+  },
   computed: {
     tagList() {
       return this.$store.getters.tagList;
