@@ -88,4 +88,10 @@ export default {
     }
   }
 }
+
+.icon {
+  width: 25px;
+  height: 25px;
+  color: rgb(161, 48, 7);
+}
 </style>

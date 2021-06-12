@@ -3,6 +3,7 @@ import App from "./App.vue";
 import router from "./router";
 import { store } from "./store/";
 
+
 import Nav from "./components/Nav.vue";
 import Layout from "./components/Layout.vue";
 import Icon from "./components/Icon.vue";

@@ -2,6 +2,15 @@
   <Layout>
     <div class="home">
       <h1 class="home__title">Today</h1>
+      <main class="home__content">
+        <h2>今日支出</h2>
+        <h2>￥0</h2>
+        <h3>收入￥0</h3>
+        <div class="home__content__detail">
+          <h3>月预算剩余￥4300</h3>
+          <h3>余下日均272</h3>
+        </div>
+      </main>
       <div>
         <button class="home__button" @click="handlerAnimation">记一笔</button>
       </div>
@@ -34,16 +43,33 @@ export default {
   overflow: hidden;
 }
 .home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  &__content {
+    padding-bottom: 100px;
+    h2 {
+      text-align: center;
+    }
+    h3 {
+      text-align: center;
+    }
+    &__detail {
+      margin-top: 15px;
+      padding: 15px;
+      border-radius: 8px;
+      background-color: rgba($color: #6b6b6b, $alpha: 0.1);
+    }
+  }
   &__title {
     position: relative;
     text-align: center;
     font-weight: 900;
+    margin-bottom: 200px;
+    text-transform: uppercase;
   }
   &__button {
-    position: absolute;
-    top: 70%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     cursor: pointer;
     border: none;
     background: $color-hightlight;
