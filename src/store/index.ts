@@ -7,7 +7,7 @@ interface ITag {
   id: string;
 }
 
-export default createStore({
+export const store = createStore({
   state: {
     tags:
       JSON.parse(window.localStorage.getItem(localStorageKeyName) as string) ||
@@ -16,8 +16,6 @@ export default createStore({
   },
   mutations: {
     createTag(state, name) {
-      console.log("enter");
-
       if (name === null) return;
       if (name?.trim === "") {
         window.alert("标签名不能为空");
@@ -35,11 +33,7 @@ export default createStore({
             id: uuidv4()
           };
           (state.tags as Array<ITag>).push(tag);
-          console.log("end");
-          window.localStorage.setItem(
-            localStorageKeyName,
-            JSON.stringify(state.tags)
-          );
+          store.commit("save", state.tags);
         }
       }
     },
@@ -47,27 +41,23 @@ export default createStore({
       console.log("deltetag");
       const newTags = (state.tags as Array<ITag>).filter(tag => tag.id !== id);
       state.tags = newTags;
-      window.localStorage.setItem(
-        localStorageKeyName,
-        JSON.stringify(state.tags)
-      );
+      store.commit("save", state.tags);
     },
     updateTag(state, payload) {
       const filterTags = (state.tags as Array<ITag>).filter(
         tag => tag.id !== payload.id
       );
-      console.log(payload);
       const tag: ITag = { id: payload.id, content: payload.content };
       const newTags = [...filterTags, tag];
       console.log(newTags);
       state.tags = [...filterTags, tag];
-      window.localStorage.setItem(
-        localStorageKeyName,
-        JSON.stringify(state.tags)
-      );
+      store.commit("save", state.tags);
     },
     toggleAnimation(state, payload) {
       state.isAnimation = payload;
+    },
+    save(state, data) {
+      window.localStorage.setItem(localStorageKeyName, data);
     }
   },
   actions: {},
