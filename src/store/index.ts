@@ -53,7 +53,7 @@ export const store = createStore({
         ) || [];
     },
     deleteTag(state, id) {
-      const newtagList = (state.tagList as Array<TagItem>).filter(
+      const newtagList = (state.tagList as Array<TagItem> ).filter(
         tag => tag.id !== id
       );
       state.tagList = newtagList;

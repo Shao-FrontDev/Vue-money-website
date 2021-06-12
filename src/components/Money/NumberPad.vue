@@ -112,11 +112,15 @@ export default {
   &__buttons {
     display: grid;
     grid-template-columns: repeat(4, auto);
+    background-color: #d9d9d9;
     &__item {
       border: none;
       height: 64px;
-      background-color: #d7d8c9;
+      background-color: #bf6e3f;
+      color: white;
       cursor: pointer;
+      margin: 5px;
+      border-radius: 6px;
       &--ok {
         grid-column: 4 / 5;
         grid-row-start: 3;
