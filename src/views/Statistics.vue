@@ -30,6 +30,7 @@
 
 <script>
 import dayjs from "dayjs";
+import { clone } from "@/utlis/clone";
 const count = (data, type) => {
   let number = 0;
 
@@ -50,21 +51,30 @@ export default {
   computed: {
     result() {
       const { recordList } = this;
+      if (recordList.length === 0) {
+        return [];
+      }
+
       const hashTable = {};
-      for (let i = 0; i < recordList.length; i++) {
-        const [date, time] = recordList[i].createAt.split("T");
+
+      const newList = clone(
+        recordList.sort(
+          (a, b) => dayjs(b.createAt).valueOf() - dayjs(a.createAt).valueOf()
+        )
+      );
+      for (let i = 0; i < newList.length; i++) {
+        const [date, time] = newList[i].createAt.split("T");
         hashTable[date] = hashTable[date] || {
           title: date,
           items: [],
-          input: null,
-          outcome: null
+          input: 0,
+          outcome: 0
         };
-        hashTable[date].items.push(recordList[i]);
-        hashTable[date].outcome += count(recordList[i], "-");
-        hashTable[date].input += count(recordList[i], "+");
+        console.log(newList[i]);
+        hashTable[date].items.push(newList[i]);
+        hashTable[date].outcome += count(newList[i], "-");
+        hashTable[date].input += count(newList[i], "+");
       }
-
-      console.log(hashTable);
 
       return hashTable;
     }
