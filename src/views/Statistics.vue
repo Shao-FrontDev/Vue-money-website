@@ -70,7 +70,6 @@ export default {
           input: 0,
           outcome: 0
         };
-        console.log(newList[i]);
         hashTable[date].items.push(newList[i]);
         hashTable[date].outcome += count(newList[i], "-");
         hashTable[date].input += count(newList[i], "+");

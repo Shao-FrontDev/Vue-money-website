@@ -4,8 +4,8 @@
       <h1 class="home__title">Today</h1>
       <main class="home__content">
         <h2>今日支出</h2>
-        <h2>￥0</h2>
-        <h3>收入￥0</h3>
+        <h2>￥{{ sum.output }}</h2>
+        <h3>收入￥{{ sum.input }}</h3>
         <div class="home__content__detail">
           <h3>月预算剩余￥4300</h3>
           <h3>余下日均272</h3>
@@ -22,9 +22,48 @@
 <script>
 import { mapGetters, mapMutations } from "vuex";
 import Money from "@/components/Money.vue";
+import dayjs from "dayjs";
 export default {
+  name: "Home",
+  data() {
+    return {
+      recordList: []
+    };
+  },
+  created() {
+    this.$store.commit("fetchRecords");
+    this.recordList = this.$store.getters.recordList;
+    console.log(this.recordList);
+  },
   components: { Money },
-  computed: { ...mapGetters(["isAnimation"]) },
+  computed: {
+    ...mapGetters(["isAnimation"]),
+    sum() {
+      const { recordList } = this;
+      if (recordList.length === 0) {
+        return [];
+      }
+      const today = [];
+
+      for (let i = 0; i < recordList.length; i++) {
+        const td = new Date();
+        if (dayjs(td).isSame(recordList[i].createAt, "day")) {
+          today.push(recordList[i]);
+        }
+      }
+      let input = 0;
+      let output = 0;
+      for (let i = 0; i < today.length; i++) {
+        if (today[i].selectedType === "+") {
+          input += today[i].selectedAmount;
+        } else {
+          output += today[i].selectedAmount;
+        }
+      }
+
+      return { input, output };
+    }
+  },
   methods: {
     ...mapMutations(["toggleAnimation"]),
     handlerAnimation() {
