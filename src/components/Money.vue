@@ -73,7 +73,6 @@ export default {
       this.record.selectedAmount = parseFloat(amount);
     },
     saveRecord() {
-      console.log("saveRecord", this.record);
       this.$store.commit("createRecord", this.record);
       this.record.selectedNotes = "";
     }

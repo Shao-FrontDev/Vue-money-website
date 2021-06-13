@@ -44,7 +44,6 @@ export default defineComponent({
     },
     ...mapMutations(["toggleAnimation"]),
     handlerAnimation() {
-      console.log("toggle");
       this.toggleAnimation(false);
     }
   }

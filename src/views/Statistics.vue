@@ -4,7 +4,7 @@
       <li v-for="(group, index) in result" :key="index" class="item-wrapper">
         <div>
           <header class="item-wrapper__header">
-            <h3 class="">{{ beautify(group.title) }}</h3>
+            <h3 class="">{{ toBeautify(group.title) }}</h3>
             <div>
               <span>出：{{ group.outcome }}</span>
               <span>入：{{ group.input }}</span>
@@ -30,15 +30,10 @@
 
 <script>
 import dayjs from "dayjs";
-import { clone } from "@/utlis/clone";
-const count = (data, type) => {
-  let number = 0;
+import { clone } from "@/utility/tool";
+import { calculate } from "@/utility/tool";
+import { beautify } from "@/utility/tool";
 
-  if (data.selectedType === type) {
-    number += data.selectedAmount;
-  }
-  return number;
-};
 export default {
   data() {
     return { recordList: {} };
@@ -71,27 +66,16 @@ export default {
           outcome: 0
         };
         hashTable[date].items.push(newList[i]);
-        hashTable[date].outcome += count(newList[i], "-");
-        hashTable[date].input += count(newList[i], "+");
+        hashTable[date].outcome += calculate(newList[i], "-");
+        hashTable[date].input += calculate(newList[i], "+");
       }
 
       return hashTable;
     }
   },
   methods: {
-    beautify(string) {
-      const day = dayjs(string);
-      const now = dayjs();
-
-      if (day.isSame(now, "day")) {
-        return "今天";
-      } else if (day.isSame(now.subtract(1, "day"), "day")) {
-        return "昨天";
-      } else if (day.isSame(now.subtract(2, "day"), "day")) {
-        return "前天";
-      } else if (day.isSame(now, "year")) {
-        return day.format("M月D日");
-      }
+    toBeautify(value) {
+      beautify(value);
     }
   }
 };

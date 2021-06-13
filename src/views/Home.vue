@@ -33,7 +33,6 @@ export default {
   created() {
     this.$store.commit("fetchRecords");
     this.recordList = this.$store.getters.recordList;
-    console.log(this.recordList);
   },
   components: { Money },
   computed: {
@@ -67,7 +66,6 @@ export default {
   methods: {
     ...mapMutations(["toggleAnimation"]),
     handlerAnimation() {
-      console.log("toggle");
       this.toggleAnimation(true);
     }
   }

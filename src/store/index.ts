@@ -1,6 +1,6 @@
 import { createStore } from "vuex";
 import { v4 as uuidv4 } from "uuid";
-import { clone } from "@/utlis/clone";
+import { clone } from "@/utility/tool";
 
 const localStorageTagsKeyName = "tagList";
 const localStorageRecordsKeyName = "recordList";
@@ -53,7 +53,7 @@ export const store = createStore({
         ) || [];
     },
     deleteTag(state, id) {
-      const newtagList = (state.tagList as Array<TagItem> ).filter(
+      const newtagList = (state.tagList as Array<TagItem>).filter(
         tag => tag.id !== id
       );
       state.tagList = newtagList;
@@ -65,7 +65,6 @@ export const store = createStore({
       );
       const tag: TagItem = { id: payload.id, content: payload.content };
       const newtagList = [...filtertagList, tag];
-      console.log(newtagList);
       state.tagList = [...filtertagList, tag];
       store.commit("saveTag", state.tagList);
     },

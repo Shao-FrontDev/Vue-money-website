@@ -42,7 +42,6 @@ export default {
       this.$router.push({ name: "Labels" });
     },
     update(e) {
-      console.log(e.target.value);
       const tag = { id: this.id, content: e.target.value };
       this.updateTag(tag);
     }

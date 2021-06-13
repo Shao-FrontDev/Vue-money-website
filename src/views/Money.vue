@@ -73,21 +73,6 @@ export default {
       this.record.selectedNotes = "";
     }
   },
-  watch: {
-    "recordList.length": {
-      handler() {
-        console.log("repro");
-      }
-    },
-    "tags.length": {
-      handler() {
-        console.log("repro");
-      }
-    }
-  },
-  created() {
-    console.log("repro");
-  },
   computed: {
     ...mapGetters(["tagList"])
   }
