@@ -107,16 +107,19 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "@/assets/styles/constants.scss";
+
 .numberPad {
   min-height: 256px;
   &__buttons {
     display: grid;
     grid-template-columns: repeat(4, auto);
-    background-color: #d9d9d9;
+    background-color: #ffdc80;
     &__item {
+      outline: none;
       border: none;
       height: 64px;
-      background-color: #5851db;
+      background-color: $number-item;
       color: white;
       cursor: pointer;
       margin: 5px;
@@ -141,6 +144,7 @@ export default {
   line-height: 72px;
   padding: 0 18px;
   text-align: right;
-  background: #fff;
+  background: #ffdc80;
+  color: #333333;
 }
 </style>

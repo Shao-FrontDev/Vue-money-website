@@ -1,5 +1,4 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
-import Money from "../views/Money.vue";
 import Labels from "../views/Labels.vue";
 import Statistics from "../views/Statistics.vue";
 import NotFound from "../views/NotFound.vue";
@@ -12,11 +11,7 @@ const routes: Array<RouteRecordRaw> = [
     name: "home",
     redirect: "/home"
   },
-  {
-    path: "/money",
-    name: "Money",
-    component: Money
-  },
+
   { path: "/home", name: "Home", component: Home },
   {
     path: "/labels",

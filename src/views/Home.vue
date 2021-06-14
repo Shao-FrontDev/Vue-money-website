@@ -74,6 +74,7 @@ export default {
 
 <style lang="scss" scoped>
 @import "../assets/styles/helper.scss";
+@import "../assets/styles/constants.scss";
 
 .wrapper {
   height: 93vh;
@@ -108,7 +109,7 @@ export default {
   &__button {
     cursor: pointer;
     border: none;
-    background: #405de6;
+    background: $create-button;
     border-radius: 16px;
     color: white;
     height: 50px;
