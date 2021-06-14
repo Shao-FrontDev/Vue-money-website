@@ -76,7 +76,7 @@ export default {
 @import "../assets/styles/helper.scss";
 
 .wrapper {
-  height: 100vh;
+  height: 93vh;
   overflow: hidden;
 }
 .home {

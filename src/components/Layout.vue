@@ -26,6 +26,7 @@ export default {
   overflow: hidden;
   &__header {
     text-align: center;
+    height: 7vh;
     padding: 15px 0;
     background-color: #f56040;
     color: white;

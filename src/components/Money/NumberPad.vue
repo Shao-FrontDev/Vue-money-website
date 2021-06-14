@@ -116,7 +116,7 @@ export default {
     &__item {
       border: none;
       height: 64px;
-      background-color: #bf6e3f;
+      background-color: #5851db;
       color: white;
       cursor: pointer;
       margin: 5px;

@@ -99,7 +99,7 @@ export default {
     left: 5px;
     cursor: pointer;
     border: none;
-    background: #d94c1a;
+    background: #e1306c;
     border-radius: 16px;
     color: white;
     height: 50px;
