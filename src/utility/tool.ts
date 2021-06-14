@@ -23,7 +23,7 @@ export const calculate = (data: RecordItem, type: String) => {
   return number;
 };
 
-export const beautify  = (value: Date) => {
+export const beautify = (value: Date) => {
   const day = dayjs(value);
   const now = dayjs();
 

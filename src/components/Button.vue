@@ -8,11 +8,12 @@ export default {};
 
 <style lang="scss" scoped>
 button {
-  border: none;
-  background-color: #767676;
-  font-size: 18px;
-  padding: 8px 16px;
-  color: #fff;
   cursor: pointer;
+  border: none;
+  background: #e1306c;
+  border-radius: 16px;
+  color: white;
+  height: 50px;
+  width: 100px;
 }
 </style>

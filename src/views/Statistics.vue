@@ -6,7 +6,9 @@
           <header class="item-wrapper__header">
             <h3 class="">{{ toBeautify(group.title) }}</h3>
             <div>
-              <span>出：{{ group.outcome }}</span>
+              <span class="item-wrapper__header__element"
+                >出：{{ group.outcome }}</span
+              >
               <span>入：{{ group.input }}</span>
             </div>
           </header>
@@ -49,9 +51,7 @@ export default {
       if (recordList.length === 0) {
         return [];
       }
-
       const hashTable = {};
-
       const newList = clone(
         recordList.sort(
           (a, b) => dayjs(b.createAt).valueOf() - dayjs(a.createAt).valueOf()
@@ -75,7 +75,7 @@ export default {
   },
   methods: {
     toBeautify(value) {
-      beautify(value);
+      return beautify(value);
     }
   }
 };
@@ -91,9 +91,13 @@ export default {
     justify-content: space-between;
     height: 50px;
     line-height: 50px;
-
     padding: 0 16px;
-    background-color: rgb(196, 196, 196);
+    background-color: #ffdc80;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    &__element {
+      margin-right: 10px;
+    }
   }
   &__record {
     padding: 10px 16px;

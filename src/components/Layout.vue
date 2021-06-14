@@ -1,5 +1,6 @@
 <template>
   <div class="nav-wrapper">
+    <header class="nav-wrapper__header">记账本</header>
     <div class="nav-wrapper__content">
       <slot></slot>
     </div>
@@ -23,6 +24,12 @@ export default {
   flex-direction: column;
   height: 100vh;
   overflow: hidden;
+  &__header {
+    text-align: center;
+    padding: 15px 0;
+    background-color: #f56040;
+    color: white;
+  }
   &__content {
     display: flex;
     flex-direction: column;

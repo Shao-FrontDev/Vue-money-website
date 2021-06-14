@@ -75,6 +75,7 @@ export default {
     saveRecord() {
       this.$store.commit("createRecord", this.record);
       this.record.selectedNotes = "";
+      alert("已经保存");
     }
   },
 
