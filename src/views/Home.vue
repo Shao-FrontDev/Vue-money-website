@@ -3,12 +3,14 @@
     <div class="home">
       <h1 class="home__title">Today</h1>
       <main class="home__content">
-        <h2>今日支出</h2>
-        <h2>￥{{ sum.output || 0 }}</h2>
-        <h3>收入￥{{ sum.input || 0 }}</h3>
-        <div class="home__content__detail">
-          <h3>月预算剩余￥4300</h3>
-          <h3>余下日均272</h3>
+        <div class="home__content__upper">
+          <h2>今日支出</h2>
+          <h2>￥{{ sum.output || 0 }}</h2>
+          <h3>收入￥{{ sum.input || 0 }}</h3>
+        </div>
+        <div class="home__content__bottom" @click="handlerBalance">
+          <h3>月预算剩余{{ balance || 0 }}</h3>
+          <h3>余下日均{{ average || 0 }}</h3>
         </div>
       </main>
       <div>
@@ -27,7 +29,8 @@ export default {
   name: "Home",
   data() {
     return {
-      recordList: []
+      recordList: [],
+      balance: null
     };
   },
   created() {
@@ -61,12 +64,27 @@ export default {
       }
 
       return { input, output };
+    },
+    average() {
+      const averagePerDay = dayjs().endOf("month").$D - dayjs().date();
+      const result = (this.balance / averagePerDay).toFixed(2);
+      if (this.balance === null) {
+        return 0;
+      } else {
+        return result;
+      }
     }
   },
   methods: {
     ...mapMutations(["toggleAnimation"]),
     handlerAnimation() {
       this.toggleAnimation(true);
+    },
+    handlerBalance() {
+      const balance = window.prompt("请输入当月的预算：");
+      if (balance.trim() !== "" && balance !== null) {
+        this.balance = balance;
+      }
     }
   }
 };
@@ -86,15 +104,19 @@ export default {
   align-items: center;
   justify-content: space-evenly;
   &__content {
-    padding-bottom: 100px;
+    &__upper {
+      padding: 30px 0;
+    }
+    padding-bottom: 50px;
     h2 {
       text-align: center;
     }
     h3 {
       text-align: center;
     }
-    &__detail {
-      padding: 15px;
+    &__bottom {
+      cursor: pointer;
+      padding: 20px 40px;
       border-radius: 8px;
       background-color: rgba($color: #6b6b6b, $alpha: 0.1);
     }
