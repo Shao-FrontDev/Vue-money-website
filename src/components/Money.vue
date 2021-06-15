@@ -73,12 +73,12 @@ export default {
       this.record.selectedAmount = parseFloat(amount);
     },
     saveRecord() {
-      if (this.record.amount === 0 || this.record.selectedTags.length === 0) {
-        console.log("请输入金额");
-      } else {
+      if (this.record.amount !== 0 && this.record.selectedTags.length !== 0) {
         this.$store.commit("createRecord", this.record);
         this.record.selectedNotes = "";
         alert("已经保存");
+      } else {
+        alert("请输入金额和选择标签");
       }
     }
   },
