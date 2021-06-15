@@ -51,7 +51,7 @@ export default {
   },
 
   methods: {
-    ...mapMutations(["createTag"]),
+    ...mapMutations(["createTag", "toggleAnimation"]),
     clear() {
       this.output = ``;
     },
@@ -77,6 +77,7 @@ export default {
         this.$store.commit("createRecord", this.record);
         this.record.selectedNotes = "";
         alert("已经保存");
+        this.toggleAnimation(false);
       } else {
         alert("请输入金额和选择标签");
       }
