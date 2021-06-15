@@ -73,9 +73,13 @@ export default {
       this.record.selectedAmount = parseFloat(amount);
     },
     saveRecord() {
-      this.$store.commit("createRecord", this.record);
-      this.record.selectedNotes = "";
-      alert("已经保存");
+      if (this.record.amount === 0 || this.record.selectedTags.length === 0) {
+        console.log("请输入金额");
+      } else {
+        this.$store.commit("createRecord", this.record);
+        this.record.selectedNotes = "";
+        alert("已经保存");
+      }
     }
   },
 
