@@ -4,6 +4,7 @@ import { clone } from "@/utility/tool";
 
 const localStorageTagsKeyName = "tagList";
 const localStorageRecordsKeyName = "recordList";
+const localStorageBalanceKeyName = "balance";
 
 interface TagItem {
   content: string;
@@ -22,7 +23,8 @@ export const store = createStore({
   state: {
     tagList: [] as TagItem[],
     isAnimation: false,
-    recordList: [] as RecordItem[]
+    recordList: [] as RecordItem[],
+    balance: null
   },
   mutations: {
     createTag(state, name) {
@@ -64,7 +66,6 @@ export const store = createStore({
         tag => tag.id !== payload.id
       );
       const tag: TagItem = { id: payload.id, content: payload.content };
-      const newtagList = [...filtertagList, tag];
       state.tagList = [...filtertagList, tag];
       store.commit("saveTag", state.tagList);
     },
@@ -94,6 +95,22 @@ export const store = createStore({
         localStorageRecordsKeyName,
         JSON.stringify(state.recordList)
       );
+    },
+    saveBalance(state) {
+      window.localStorage.setItem(
+        localStorageBalanceKeyName,
+        JSON.stringify(state.balance)
+      );
+    },
+    createBalance(state, payload) {
+      state.balance = payload;
+      store.commit("saveBalance");
+    },
+    fetchBalance(state) {
+      state.balance =
+        JSON.parse(
+          window.localStorage.getItem(localStorageBalanceKeyName) as string
+        ) || 0;
     }
   },
   actions: {},
@@ -107,6 +124,9 @@ export const store = createStore({
     },
     recordList(state) {
       return state.recordList;
+    },
+    balance(state) {
+      return state.balance;
     }
   }
 });

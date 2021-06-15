@@ -29,17 +29,18 @@ export default {
   name: "Home",
   data() {
     return {
-      recordList: [],
-      balance: null
+      recordList: []
     };
   },
   created() {
     this.$store.commit("fetchRecords");
+    this.$store.commit("fetchBalance");
     this.recordList = this.$store.getters.recordList;
+    this.balance = this.$store.getters.balance;
   },
   components: { Money },
   computed: {
-    ...mapGetters(["isAnimation"]),
+    ...mapGetters(["isAnimation", "balance"]),
     sum() {
       const { recordList } = this;
       if (recordList.length === 0) {
@@ -83,7 +84,7 @@ export default {
     handlerBalance() {
       const balance = window.prompt("请输入当月的预算：");
       if (balance.trim() !== "" && balance !== null) {
-        this.balance = balance;
+        this.$store.commit("createBalance", balance);
       }
     }
   }
